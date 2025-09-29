@@ -8,8 +8,12 @@ fetch("data.json")
       const card = document.createElement("div");
       card.classList.add("evento-card");
 
+      
       card.innerHTML = `
-        <div class="evento-top"></div>
+        <div class="evento-top">
+          <div class="evento-badge"></div>
+        </div>
+
         <div class="evento-info">
           <h3 class="evento-titulo">${evento.nombre}</h3>
           <p><strong>Fecha:</strong> ${evento.fecha || "Por definir"}</p>
@@ -24,23 +28,22 @@ fetch("data.json")
       contenedor.appendChild(card);
     });
 
-    // Footer
+    
     const footer = document.getElementById("footer");
-    const f = data.footer;
-
+    const f = data.footer || {};
     footer.innerHTML = `
       <div class="footer-top">
-        <div>${f.telefonos}</div>
-        <div>${f.correo}</div>
-        <div>${f.direccion}</div>
-        <div>${f.ciudad}</div>
+        <div>${f.telefonos || ""}</div>
+        <div>${f.correo || ""}</div>
+        <div>${f.direccion || ""}</div>
+        <div>${f.ciudad || ""}</div>
       </div>
       <div class="footer-links">
-        ${f.enlaces.map(link => `<span>${link}</span>`).join(" | ")}
+        ${ (f.enlaces || []).map(link => `<span>${link}</span>`).join(" | ") }
       </div>
       <div class="footer-bottom">
         <div class="footer-logo">UAO</div>
-        <p>${f.legal}</p>
+        <p>${f.legal || ""}</p>
       </div>
     `;
   })

@@ -1,4 +1,4 @@
-/* Estilo general */
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -6,12 +6,12 @@ body {
   color: #222;
 }
 
-/* Header */
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #7a0c2e; /* vino UAO */
+  background: #7a0c2e; 
   padding: 10px 20px;
   color: #fff;
 }
@@ -34,12 +34,12 @@ body {
   font-weight: 500;
 }
 
-/* Bloque inicial amplio */
+
 .hero {
   background: #f3f3f3;
   text-align: center;
-  padding: 250px 20px; /* GRAN espacio inicial */
-  border-bottom: 220px solid #6e6e6e; /* borde gris UAO */
+  padding: 250px 20px; 
+  border-bottom: 220px solid #6e6e6e; 
 }
 
 .hero-texto h1 {
@@ -55,17 +55,14 @@ body {
   line-height: 1.6;
 }
 
-/* Sección eventos */
+
 .eventos-section {
   margin-top: 20px;
   padding: 60px;
 }
 
 .eventos-titulo {
-  font-size: 35px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #333;
+font-size: 30px; font-weight: bold; text-align: left; margin: 0 0 10px 0; color: #111;
 }
 
 .eventos-grid {
@@ -75,35 +72,48 @@ body {
   padding: 20px;
 }
 
-/* Tarjetas */
+
 .evento-card {
   background: #fff;
   border-radius: 6px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative; 
+  transition: transform 0.18s ease;
 }
 
-.evento-card:hover {
-  transform: scale(1.05);
-}
+.evento-card:hover { transform: translateY(-6px); }
 
 .evento-top {
-  background-color: #b71c1c; /* Rojo característico UAO */
-  height: 260px;
+  background-color: #7a0c2e; 
+  height: var(--top-height);
   width: 100%;
+  position: relative; 
 }
+
+
 
 .evento-info {
-font-size: 14px;
-  color: #555;
-  padding: 15px;   /* margen interno para separar del borde */
-  line-height: 1.5; /* mejora legibilidad */
+  background: #fff;     
+  padding: 25px;        
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
 }
 
+
+.evento-info p {
+  margin: 5px 0;       /* 🔹 Espacio vertical entre párrafos */
+  line-height: 1.3;    /* 🔹 Ajusta interlineado */
+}
+
+
+.evento-info p strong { font-weight: 600; color: #111; }
+
 footer {
-  background: #7a0f1a; /* rojo institucional */
+  background: #7a0f1a; 
   color: #fff;
   padding: 40px 20px;
   font-size: 14px;
@@ -147,11 +157,39 @@ footer {
 }
 
 .franja-gris {
-  height: 80px;            /* grosor */
-  background: #6e6e6e;     /* gris UAO */
-  margin-top: 40px;        /* separación con las tarjetas */
+  height: 80px;            
+  background: #6e6e6e;    
+  margin-top: 40px;        
 }
 
+:root {
+  --top-height: 210px;   
+  --badge-size: 220px;   
+  --badge-offset: 26px;  
+}
+
+.evento-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+    width: 285px;  
+  height: 210px; 
+  background: #9c9c9c;
+  border: 1px solid #9c9c9c;
+  border-radius: 6px;
+  box-shadow: 0 12px 22px rgba(0,0,0,0.12);
+  margin-top: 27px;   /* 🔽 Mueve la cajita hacia abajo */
+
+  
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.evento-badge img { max-width: 100%; max-height: 100%; display: block; }
 
 
 
