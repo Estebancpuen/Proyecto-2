@@ -36,10 +36,12 @@ body {
 
 
 .hero {
-  background: #f3f3f3;
+background: url("../../General/recursos/Entrada.jpg") no-repeat center center;
+  background-size: cover;   /* La imagen se adapta a todo el bloque */
   text-align: center;
   padding: 250px 20px; 
   border-bottom: 220px solid #6e6e6e; 
+  
 }
 
 .hero-texto h1 {
@@ -157,9 +159,10 @@ footer {
 }
 
 .franja-gris {
-  height: 80px;            
-  background: #6e6e6e;    
-  margin-top: 40px;        
+height: 80px;            
+  background: url("../../General/recursos/Gris.jpg") no-repeat center center;
+  background-size: cover; /* La imagen ocupa toda la franja */
+  margin-top: 40px;          
 }
 
 :root {
