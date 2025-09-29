@@ -50,5 +50,21 @@
       "recurrente": false,
       "carrera_especifica": false
     }
-  ]
+    ],
+  "footer": {
+    "telefonos": "PBX: (602) 3188000",
+    "correo": "buzon@uao.edu.co",
+    "direccion": "Cl 25 # 115-85 Km 2 Vía Cali – Jamundí",
+    "ciudad": "Cali, Colombia Código Postal: 760030",
+    "enlaces": [
+      "Valores de Matrícula",
+      "Pregrados 2025",
+      "Posgrados 2025",
+      "Programas tecnológicos 2025",
+      "Programas virtuales 2025",
+      "Derechos Pecuniarios 2025"
+    ],
+    "legal": "Personería jurídica, Res. No. 0618, de la Gobernación del Valle del Cauca, del 20 de febrero de 1970. Universidad Autónoma de Occidente, Res. No. 2766, del Ministerio de Educación Nacional, del 13 de noviembre de 2003. Acreditación Institucional de Alta Calidad, Res. 23002 del 30 de noviembre de 2021. Acreditación Internacional de Alta Calidad, acuerdo No. 85 del 26/01/2022 del Cinda. La Universidad Autónoma de Occidente está sujeta a inspección y vigilancia por el Ministerio de Educación Nacional – Artículo 39 del decreto 1295 de 2010."
+  }
 }
+
