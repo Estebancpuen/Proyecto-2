@@ -48,22 +48,22 @@ body {
 .hero::after {
   content: "";
   position: absolute;
-  bottom: 0;  /* para que arranque desde abajo */
+  bottom: 0;  
   left: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.7) 0%,   /* oscuro abajo */
+    rgba(0, 0, 0, 0.7) 0%,   
     rgba(0, 0, 0, 0.3) 80%,
     rgba(0, 0, 0, 0) 100%
   );
-  z-index: 1; /* capa detrás del texto */
+  z-index: 1; 
 }
 
 .hero-texto {
   position: relative;
-  z-index: 2; /* asegura que esté sobre el degradado */
+  z-index: 2; 
 }
 
 .hero-texto h1 {
@@ -106,14 +106,14 @@ body {
    background: #fff;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  overflow: hidden;   /* 🔹 vuelve a hidden */
+  overflow: hidden;   
   display: flex;
   flex-direction: column;
   position: relative; 
   transition: transform 0.18s ease;
 }
 
-/* (si deseas, elimina overflow:hidden en evento-card si limita la animación) */
+
 .evento-card { overflow: visible; }
 
 .evento-card:focus-within .evento-detalles {
@@ -130,10 +130,9 @@ body {
   position: relative; 
 }
 
-/* Pequeño ajuste para móviles: hover no existe, usar touch-friendly cursor */
+
 @media (hover: none) and (pointer: coarse) {
-  /* En pantallas táctiles, no depender del :hover; ya añadimos .expanded en JS */
-  .evento-card:hover .evento-detalles { /* evita efecto hover en móviles */
+  .evento-card:hover .evento-detalles { 
     max-height: 0;
     opacity: 0;
   }
@@ -150,11 +149,11 @@ body {
 
 
 .evento-info p {
-  margin: 5px 0;       /* 🔹 Espacio vertical entre párrafos */
-  line-height: 1.3;    /* 🔹 Ajusta interlineado */
+  margin: 5px 0;       
+  line-height: 1.3;    
 }
 
-/* DETALLES ocultos por defecto (animación por max-height + opacity) */
+
 .evento-detalles {
     position: absolute;
   bottom: 0;
@@ -169,15 +168,15 @@ body {
   pointer-events: none;
 }
 
-/* Al hacer hover en desktop, mostrar los detalles */
+
 .evento-card:hover .evento-detalles,
-.evento-card.expanded .evento-detalles { /* expanded permite mostrar por tap */
+.evento-card.expanded .evento-detalles { 
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-/* Opcional: reducir espacio entre las líneas de los detalles */
+
 .evento-detalles p {
   margin: 6px 0;
   line-height: 1.3;
@@ -235,7 +234,7 @@ footer {
 .franja-gris {
 height: 80px;            
   background: url("../../General/recursos/Gris.jpg") no-repeat center center;
-  background-size: cover; /* La imagen ocupa toda la franja */
+  background-size: cover; 
   margin-top: 40px;          
 }
 
@@ -255,7 +254,7 @@ height: 80px;
   border: 1px solid #9c9c9c;
   border-radius: 6px;
   box-shadow: 0 12px 22px rgba(0,0,0,0.12);
-  margin-top: 27px;   /* 🔽 Mueve la cajita hacia abajo */
+  margin-top: 27px;  
 
   
   transform: translate(-50%, -50%);
