@@ -62,31 +62,44 @@ body {
 }
 
 .eventos-titulo {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #444;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
 }
 
 .eventos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
+  padding: 20px;
 }
 
 /* Tarjetas */
 .evento-card {
-  border-radius: 12px;
-  padding: 20px;
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-  transition: transform 0.2s;
-  border: 5px solid #919191; /* borde gris separador */
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .evento-card:hover {
   transform: scale(1.05);
+}
+
+.evento-top {
+  background-color: #b71c1c; /* Rojo característico UAO */
+  height: 260px;
+  width: 100%;
+}
+
+.evento-info {
+font-size: 14px;
+  color: #555;
+  padding: 15px;   /* margen interno para separar del borde */
+  line-height: 1.5; /* mejora legibilidad */
 }
 
 footer {
@@ -133,14 +146,13 @@ footer {
   margin-bottom: 10px;
 }
 
+.franja-gris {
+  height: 80px;            /* grosor */
+  background: #6e6e6e;     /* gris UAO */
+  margin-top: 40px;        /* separación con las tarjetas */
+}
 
 
-
-/* Colores variados tipo UAO */
-.evento-card:nth-child(1n) { background: #009688; } /* turquesa */
-.evento-card:nth-child(2n) { background: #d32f2f; } /* rojo */
-.evento-card:nth-child(3n) { background: #7b1fa2; } /* morado */
-.evento-card:nth-child(4n) { background: #f57c00; } /* naranja */
 
 
 
