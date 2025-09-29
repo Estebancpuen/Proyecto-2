@@ -1,0 +1,54 @@
+{
+  "eventos": [
+    {
+      "id": "85",
+      "nombre": "Panel Marketing: innovación e inteligencia artificial",
+      "fecha": "2025-10-01",
+      "descripcion": null,
+      "lugar": null,
+      "disponibilidad": null,
+      "recurrente": false,
+      "carrera_especifica": false
+    },
+    {
+      "id": "86",
+      "nombre": "Webinar gratuito: Protección de Datos Personales en Colombia",
+      "fecha": "2025-10-02",
+      "descripcion": null,
+      "lugar": "virtual",
+      "disponibilidad": null,
+      "recurrente": false,
+      "carrera_especifica": false
+    },
+    {
+      "id": "87",
+      "nombre": "Entérate de las novedades académicas que te impactan directamente",
+      "fecha": "2025-09-30",
+      "descripcion": null,
+      "lugar": null,
+      "disponibilidad": null,
+      "recurrente": false,
+      "carrera_especifica": false
+    },
+    {
+      "id": "preparate-concurso-nacional-escritura-2022",
+      "nombre": "Concurso Nacional de Escritura 2022",
+      "fecha": "2022-04-04",
+      "descripcion": "Evento para jóvenes entre 14 y 23 años, taller sobre narrador y puntos de vista, escritura literaria.", 
+      "lugar": "Virtual",
+      "disponibilidad": null,
+      "recurrente": false,
+      "carrera_especifica": false
+    },
+    {
+      "id": "lenguas-indigenas-colombia",
+      "nombre": "Reconocimiento, recuperación y fortalecimiento de lenguas indígenas de Colombia",
+      "fecha": null,
+      "descripcion": "Investigación con el fin de coadyuvar en la descripción y análisis tipológico-comparativo de las lenguas indígenas de América.", 
+      "lugar": null,
+      "disponibilidad": null,
+      "recurrente": false,
+      "carrera_especifica": false
+    }
+  ]
+}
