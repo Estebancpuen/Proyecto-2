@@ -39,4 +39,18 @@ function renderCategorias(lista, containerId) {
   });
 }
 
+// Desplazamiento suave personalizado
+document.querySelectorAll('a[href^="#"]').forEach(enlace => {
+  enlace.addEventListener('click', function(e) {
+    e.preventDefault();
+    const destino = document.querySelector(this.getAttribute('href'));
+    if (destino) {
+      window.scrollTo({
+        top: destino.offsetTop - 60, // ajusta según la altura del navbar
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
 
