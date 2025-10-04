@@ -1,64 +1,42 @@
+// Cargar JSON dinámicamente
 fetch("data.json")
-  .then(response => response.json())
+  .then(res => res.json())
   .then(data => {
-    const contenedor = document.getElementById("eventos");
-    contenedor.innerHTML = "";
+    renderEventos(data.actividades, "actividadesGrid");
+    renderEventos(data.proximos, "eventosGrid");
+    renderCategorias(data.categorias, "categoriasGrid");
+  });
 
-    data.eventos.forEach(evento => {
-      const card = document.createElement("div");
-      card.className = "evento-card";
+// Renderizar tarjetas de eventos
+function renderEventos(lista, containerId) {
+  const container = document.getElementById(containerId);
+  lista.forEach(evento => {
+    const card = document.createElement("div");
+    card.className = "card";
 
-      card.innerHTML = `
-        <div class="evento-top">
-          <div class="evento-badge"></div>
-        </div>
-
-        <div class="evento-info">
-          <p class="evento-titulo">${evento.nombre}</p>
-
-          <!-- DETALLES: envueltos en este div para ocultar/mostrar -->
-          <div class="evento-detalles">
-            <p><strong>Fecha:</strong> ${evento.fecha || "Por definir"}</p>
-            <p><strong>Descripción:</strong> ${evento.descripcion || "No disponible"}</p>
-            <p><strong>Lugar:</strong> ${evento.lugar || "Por definir"}</p>
-            <p><strong>Disponibilidad:</strong> ${evento.disponibilidad || "No especificada"}</p>
-            <p><strong>Tipo:</strong> ${evento.recurrente ? "Recurrente" : "Puntual"}</p>
-            <p><strong>Carreras:</strong> ${evento.carrera_especifica ? "Específica" : "Varias carreras"}</p>
-          </div>
-        </div>
-      `;
-
-      contenedor.appendChild(card);
-    });
-
-    // Soporte tap en móviles: alterna clase .expanded al tocar la tarjeta
-    contenedor.addEventListener('click', (e) => {
-      const card = e.target.closest('.evento-card');
-      if (!card) return;
-      // Si el click fue sobre enlaces u otros controles, evita toggle
-      const isControl = e.target.tagName === 'A' || e.target.closest('a, button');
-      if (isControl) return;
-      // toggle expanded (solo para móviles / taps)
-      card.classList.toggle('expanded');
-    });
-
-    // Footer (tu código sigue igual)
-    const footer = document.getElementById("footer");
-    const f = data.footer || {};
-    footer.innerHTML = `
-      <div class="footer-top">
-        <div>${f.telefonos || ""}</div>
-        <div>${f.correo || ""}</div>
-        <div>${f.direccion || ""}</div>
-        <div>${f.ciudad || ""}</div>
+    card.innerHTML = `
+      <img src="${evento.imagen}" alt="${evento.titulo}">
+      <div class="card-content">
+        <span class="tag ${evento.tipo.toLowerCase()}">${evento.tipo}</span>
+        <h3>${evento.titulo}</h3>
+        <p>${evento.descripcion}</p>
       </div>
-      <div class="footer-links">
-        ${ (f.enlaces || []).map(link => `<span>${link}</span>`).join(" | ") }
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-logo">UAO</div>
-        <p>${f.legal || ""}</p>
-      </div>
+      <a href="#" class="btn-secondary">Ver más</a>
     `;
-  })
-  .catch(err => console.error("Error cargando JSON:", err));
+
+    container.appendChild(card);
+  });
+}
+
+// Renderizar categorías
+function renderCategorias(lista, containerId) {
+  const container = document.getElementById(containerId);
+  lista.forEach(cat => {
+    const div = document.createElement("div");
+    div.className = "categoria-card";
+    div.textContent = cat;
+    container.appendChild(div);
+  });
+}
+
+

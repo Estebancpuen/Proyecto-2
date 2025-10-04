@@ -1,70 +1,48 @@
 {
-  "eventos": [
+  "actividades": [
     {
-      "id": "85",
-      "nombre": "Panel Marketing: innovación e inteligencia artificial",
-      "fecha": "2025-10-01",
-      "descripcion": null,
-      "lugar": null,
-      "disponibilidad": null,
-      "recurrente": false,
-      "carrera_especifica": false
+      "titulo": "Danza Cultural",
+      "descripcion": "Muestra semanal de danza folclórica con participación de grupos estudiantiles.",
+      "tipo": "Presencial",
+      "imagen": "https://source.unsplash.com/400x250/?dance,culture"
     },
     {
-      "id": "86",
-      "nombre": "Webinar gratuito: Protección de Datos Personales en Colombia",
-      "fecha": "2025-10-02",
-      "descripcion": null,
-      "lugar": "virtual",
-      "disponibilidad": null,
-      "recurrente": false,
-      "carrera_especifica": false
+      "titulo": "Seminario de Inteligencia Artificial",
+      "descripcion": "Charlas sobre IA y su impacto en la industria tecnológica actual.",
+      "tipo": "Virtual",
+      "imagen": "https://source.unsplash.com/400x250/?artificial,intelligence"
     },
     {
-      "id": "87",
-      "nombre": "Entérate de las novedades académicas que te impactan directamente",
-      "fecha": "2025-09-30",
-      "descripcion": null,
-      "lugar": null,
-      "disponibilidad": null,
-      "recurrente": false,
-      "carrera_especifica": false
-    },
-    {
-      "id": "preparate-concurso-nacional-escritura-2022",
-      "nombre": "Concurso Nacional de Escritura 2022",
-      "fecha": "2022-04-04",
-      "descripcion": "Evento para jóvenes entre 14 y 23 años, taller sobre narrador y puntos de vista, escritura literaria.", 
-      "lugar": "Virtual",
-      "disponibilidad": null,
-      "recurrente": false,
-      "carrera_especifica": false
-    },
-    {
-      "id": "lenguas-indigenas-colombia",
-      "nombre": "Reconocimiento, recuperación y fortalecimiento de lenguas indígenas de Colombia",
-      "fecha": null,
-      "descripcion": "Investigación con el fin de coadyuvar en la descripción y análisis tipológico-comparativo de las lenguas indígenas de América.", 
-      "lugar": null,
-      "disponibilidad": null,
-      "recurrente": false,
-      "carrera_especifica": false
+      "titulo": "Fútbol",
+      "descripcion": "Partido amistoso en las canchas de la universidad.",
+      "tipo": "Deporte",
+      "imagen": "https://source.unsplash.com/400x250/?football,soccer"
     }
-    ],
-  "footer": {
-    "telefonos": "PBX: (602) 3188000",
-    "correo": "buzon@uao.edu.co",
-    "direccion": "Cl 25 # 115-85 Km 2 Vía Cali – Jamundí",
-    "ciudad": "Cali, Colombia Código Postal: 760030",
-    "enlaces": [
-      "Valores de Matrícula",
-      "Pregrados 2025",
-      "Posgrados 2025",
-      "Programas tecnológicos 2025",
-      "Programas virtuales 2025",
-      "Derechos Pecuniarios 2025"
-    ],
-    "legal": "Personería jurídica, Res. No. 0618, de la Gobernación del Valle del Cauca, del 20 de febrero de 1970. Universidad Autónoma de Occidente, Res. No. 2766, del Ministerio de Educación Nacional, del 13 de noviembre de 2003. Acreditación Institucional de Alta Calidad, Res. 23002 del 30 de noviembre de 2021. Acreditación Internacional de Alta Calidad, acuerdo No. 85 del 26/01/2022 del Cinda. La Universidad Autónoma de Occidente está sujeta a inspección y vigilancia por el Ministerio de Educación Nacional – Artículo 39 del decreto 1295 de 2010."
-  }
+  ],
+  "proximos": [
+    {
+      "titulo": "Festival de Música Colombiana",
+      "descripcion": "Un espacio cultural con música tradicional y moderna del país.",
+      "tipo": "Presencial",
+      "imagen": "https://source.unsplash.com/400x250/?music,concert"
+    },
+    {
+      "titulo": "Seminario de Inteligencia Artificial en la Educación",
+      "descripcion": "Evento académico sobre el uso de la IA en procesos de enseñanza.",
+      "tipo": "Virtual",
+      "imagen": "https://source.unsplash.com/400x250/?education,ai"
+    },
+    {
+      "titulo": "Torneo Intercanchas de Fútbol",
+      "descripcion": "Competencia deportiva entre equipos de diferentes facultades.",
+      "tipo": "Deporte",
+      "imagen": "https://source.unsplash.com/400x250/?soccer,stadium"
+    }
+  ],
+  "categorias": [
+    "Arte y Cultura",
+    "Tecnología e Innovación",
+    "Deporte y Bienestar",
+    "Eventos Académicos"
+  ]
 }
-

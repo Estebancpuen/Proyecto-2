@@ -1,71 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Eventos Culturales UAO</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo">UAO</div>
-    <nav class="nav">
-      <ul>
-        <li>Institución</li>
-        <li>Oferta Académica</li>
-        <li>Admisiones</li>
-        <li>Servicios</li>
-        <li>Bienestar Universitario</li>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">UAO</div>
+      <ul class="nav-links">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#actividades">Actividades</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#categorias">Categorías</a></li>
       </ul>
+      <div class="search-box">
+        <input type="text" placeholder="Buscar..." id="searchInput"/>
+        <button id="searchBtn">🔍</button>
+      </div>
     </nav>
   </header>
 
-  <!-- BLOQUE PRINCIPAL -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-texto">
-      <h1>Eventos Culturales UAO</h1>
-      <p>Descubre las actividades que enriquecen la vida universitaria: música, arte, teatro, conferencias y mucho más.</p>
-    </div>
+    <h1>Eventos Culturales UAO</h1>
+    <p>Descubre actividades culturales, deportivas y académicas en la universidad</p>
+    <a href="#actividades" class="btn-primary">Explorar</a>
   </section>
 
-  <!-- EVENTOS -->
-  <section class="eventos-section">
-    <h2 class="eventos-titulo">Agenda Cultural</h2>
-    <div class="eventos-grid" id="eventos">
-      
-      <!-- 🔹 Ejemplo de tarjeta de evento -->
-      <div class="evento-card">
-        <div class="evento-top"></div>
-        <div class="evento-info">
-          <!-- Solo visible al inicio -->
-          <p class="evento-titulo"><strong>Panel Marketing: Innovación</strong></p>
-          
-          <!-- Se despliega en hover -->
-          <div class="evento-detalles">
-            <p><strong>Fecha:</strong> 12/10/2025</p>
-            <p><strong>Descripción:</strong> Charla sobre estrategias de marketing innovadoras.</p>
-            <p><strong>Lugar:</strong> Auditorio Principal</p>
-            <p><strong>Disponibilidad:</strong> 50 cupos</p>
-            <p><strong>Tipo:</strong> Conferencia</p>
-            <p><strong>Carreras:</strong> Mercadeo, Administración</p>
-          </div>
-        </div>
-      </div>
+<!-- Actividades Semanales -->
+<section id="actividades" class="eventos-section">
+  <h2>ACTIVIDADES SEMANALES</h2>
+  <div class="eventos-container">
+    <div class="eventos-grid" id="actividadesGrid"></div>
+  </div>
+</section>
 
-      <!-- Puedes repetir más tarjetas aquí -->
+<!-- Próximos Eventos -->
+<section id="eventos" class="eventos-section destacados">
+  <h2>PRÓXIMOS EVENTOS DESTACADOS</h2>
+  <div class="eventos-container">
+    <div class="eventos-grid" id="eventosGrid"></div>
+  </div>
+</section>
 
+  <!-- Categorías -->
+  <section id="categorias" class="categorias-section">
+  <h2>CATEGORÍAS</h2>
+  <div class="categorias-container">
+    <div class="categorias-grid" id="categoriasGrid"></div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <button class="btn-secondary">Enviar Feedback</button>
+      <p>© 2025 Universidad Autónoma de Occidente</p>
     </div>
-  </section>
+  </footer>
 
-  <!-- FRANJA GRIS INFERIOR -->
-  <div class="franja-gris"></div>
-
-  <!-- FOOTER -->
-  <footer id="footer"></footer>
-
-  <!-- Script SOLO una vez -->
   <script src="script.js"></script>
 </body>
 </html>
+
+
 
 
