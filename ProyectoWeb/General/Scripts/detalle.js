@@ -66,19 +66,35 @@ async function fetchAndRenderEvent(id, container) {
 
 /**
  * Genera el HTML de la vista de detalle del evento con estructura de dos columnas.
- * Nota: Usa las clases CSS definidas para la independencia visual.
- * @param {object} evento - El objeto del evento (debe tener campos como fecha, hora, ubicacion, capacidad, organiza).
+ * @param {object} evento - El objeto del evento.
  * @returns {string} El HTML generado.
  */
 function renderEventDetail(evento) {
-    // Extracción segura de datos para metadatos, usando descripciones por defecto si faltan.
-    const fechaTexto = evento.fecha || 'Fecha no especificada';
-    const horaTexto = evento.hora || 'Hora no especificada'; // Asumiendo que existe un campo 'hora'
+    // 1. Extracción de datos de metadatos (ahora desde los campos separados)
+    const fechaISO = evento.fecha; // Espera formato 'YYYY-MM-DD'
+    const horaTexto = evento.hora || '09:00-17:00'; 
     const ubicacionTexto = evento.ubicacion || 'Lugar no especificado';
     const capacidadTexto = evento.capacidad || 'N/A';
     const organizaTexto = evento.organiza || 'No especificado';
     
-    // Fallback para la URL de la imagen.
+    // 2. Procesamiento de la fecha para los bloques de metadatos
+    let dia = '25';
+    let mes = 'NOV';
+    let diaSemana = 'Viernes';
+    
+    try {
+        const fechaObj = new Date(fechaISO + 'T12:00:00'); // Añadimos hora para evitar problemas de zona horaria
+        if (!isNaN(fechaObj)) {
+            dia = fechaObj.getDate().toString();
+            mes = fechaObj.toLocaleString('es-ES', { month: 'short' }).toUpperCase().replace('.', ''); // Ej. NOV
+            diaSemana = fechaObj.toLocaleString('es-ES', { weekday: 'long' });
+        }
+    } catch (e) {
+        // En caso de error, mantenemos los valores por defecto
+        console.error("Error al procesar la fecha:", e);
+    }
+    
+    // 3. Fallback para la URL de la imagen.
     const imagenUrl = evento.imagenUrlDetalle || evento.imagenUrl || 'https://placehold.co/900x450/960000/fff?text=Imagen+del+Evento';
 
     // Generamos la plantilla con la nueva estructura de dos columnas
@@ -108,9 +124,9 @@ function renderEventDetail(evento) {
                     </div>
 
                     <div class="evento-metadatos-bloque evento-fecha-bloque">
-                        <span class="metadato-dia">${new Date(fechaTexto).getDate() || '25'}</span> 
-                        <span class="metadato-mes">${new Date(fechaTexto).toLocaleString('es-ES', { month: 'short' }).toUpperCase() || 'NOV'}</span>
-                        <span class="metadato-dia-semana">${new Date(fechaTexto).toLocaleString('es-ES', { weekday: 'long' }) || 'Viernes'}</span>
+                        <span class="metadato-dia">${dia}</span> 
+                        <span class="metadato-mes">${mes}</span>
+                        <span class="metadato-dia-semana">${diaSemana}</span>
                         <span class="metadato-hora-rango">${horaTexto}</span>
                     </div>
 
