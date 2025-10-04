@@ -1,0 +1,197 @@
+/* --- ESTILOS GENERALES DE LA CAJA PRINCIPAL --- */
+.evento-detalle-container {
+    max-width: 1200px; /* Aumentamos el ancho para acomodar dos columnas */
+    margin: 40px auto; /* Centra horizontalmente */
+    padding: 30px 40px; 
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la página */
+.evento-titulo-principal {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- ESTRUCTURA DE LAYOUT DE DOS COLUMNAS --- */
+.evento-layout {
+    display: flex;
+    gap: 30px; /* Espacio entre las columnas */
+}
+
+.evento-col-principal {
+    flex: 3; /* Ocupa 3/4 del ancho (simétrico con la imagen original) */
+    min-width: 60%;
+}
+
+.evento-col-metadatos {
+    flex: 1; /* Ocupa 1/4 del ancho */
+    display: flex; /* Para apilar los bloques de metadatos */
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- ESTILOS DE LA COLUMNA PRINCIPAL (IZQUIERDA) --- */
+.evento-detalle-imagen {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.evento-descripcion-titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #960000; /* Línea roja de acento */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.evento-detalle-descripcion {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 40px;
+}
+
+/* Botón de Inscripción (Replicando el estilo de la imagen) */
+.btn-inscripcion {
+    display: block;
+    width: 100%;
+    padding: 15px 25px; 
+    border-radius: 6px;
+    background-color: #960000; /* El color rojo principal de la UAO */
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: none;
+    margin-top: 30px;
+}
+
+.btn-inscripcion:hover {
+    background-color: #7b0000;
+}
+
+/* --- ESTILOS DE LA COLUMNA DE METADATOS (DERECHA) --- */
+
+/* Estilo para el título de la tarjeta derecha */
+.evento-metadatos-titulo-bloque {
+    background-color: #fff; 
+    color: #960000;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.evento-metadatos-bloque {
+    padding: 20px;
+    background-color: #fff0f0; /* Fondo rosa claro para los metadatos, replicando el diseño */
+    border-radius: 8px;
+    border-left: 5px solid #960000; /* Línea de acento roja UAO */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos específicos del bloque de fecha y hora */
+.evento-fecha-bloque {
+    text-align: center;
+    padding: 25px 20px;
+}
+
+.metadato-dia {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #960000;
+    line-height: 1;
+}
+
+.metadato-mes {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.metadato-dia-semana, .metadato-hora-rango {
+    display: block;
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Estilos de los detalles (Ubicación, Capacidad, Organiza) */
+.metadato-subtitulo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #960000;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #960000;
+}
+
+.metadato-linea {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.metadato-label {
+    font-weight: 600;
+}
+
+.metadato-icono {
+    margin-right: 5px;
+}
+
+
+/* --- ESTILO PARA EL BOTÓN DE VOLVER (SECUNDARIO) --- */
+.evento-detalle-acciones {
+    text-align: right;
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.btn-action-secondary {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: #fff; 
+    color: #960000; 
+    border: 2px solid #960000;
+}
+
+.btn-action-secondary:hover {
+    background: #960000;
+    color: #fff;
+}
+
+
+/* --- ESTILOS RESPONSIVOS (Opcional, pero recomendado) --- */
+@media (max-width: 950px) {
+    .evento-layout {
+        flex-direction: column; /* Apila las columnas verticalmente en pantallas pequeñas */
+    }
+    .evento-col-principal, .evento-col-metadatos {
+        flex: auto; /* Ocupan todo el ancho */
+    }
+}

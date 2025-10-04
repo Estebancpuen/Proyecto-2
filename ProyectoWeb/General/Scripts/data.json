@@ -1,48 +1,75 @@
 {
-  "actividades": [
-    {
-      "titulo": "Danza Cultural",
-      "descripcion": "Muestra semanal de danza folclórica con participación de grupos estudiantiles.",
-      "tipo": "Presencial",
-      "imagen": "https://source.unsplash.com/400x250/?dance,culture"
+  "navbar": {
+    "titulo": "Eventos Culturales UAO",
+    "links": [
+      { "nombre": "Inicio", "url": "index.html" },
+      { "nombre": "Actividades", "url": "#actividades" },
+      { "nombre": "Categorías", "url": "#categorias" },
+      { "nombre": "Contacto", "url": "#contacto" }
+    ]
+  },
+  "hero": {
+    "titulo": "Explora la Cultura y el Conocimiento en la UAO",
+    "subtitulo": "Descubre nuestros próximos eventos y actividades destacadas.",
+    "imagenUrl": "https://placehold.co/1200x400/1e293b/ffffff?text=Banner+Cultural"
+  },
+  "secciones": {
+    "actividadesSemana": {
+      "titulo": "Actividades de la Semana",
+      "eventos": [
+        {
+          "id": "danza-cultural-2025",
+          "titulo": "Danza Cultural: Ritmos del Pacífico",
+          "fecha": "Lunes, 19:00 - Auditorio",
+          "descripcionCorta": "Una noche para vibrar con los sonidos y movimientos del Pacífico colombiano.",
+          "descripcionLarga": "Únete a nuestro taller intensivo de Danza del Pacífico. Aprenderás los pasos básicos de la Jota Chocana y el Currulao, explorando la historia y el significado cultural de cada movimiento. No se requiere experiencia previa.",
+          "imagenUrl": "https://placehold.co/400x300/f87171/ffffff?text=Danza",
+          "etiqueta": "Danza"
+        },
+        {
+          "id": "seminario-ia-etica",
+          "titulo": "Seminario: IA y Ética en el Siglo XXI",
+          "fecha": "Miércoles, 10:00 - Sala de Conferencias",
+          "descripcionCorta": "Analiza el futuro de la Inteligencia Artificial y sus dilemas éticos.",
+          "descripcionLarga": "Expertos en tecnología y filosofía debatirán sobre el impacto de la Inteligencia Artificial en la sociedad, la privacidad de datos y la necesidad de marcos éticos robustos para el desarrollo tecnológico. Incluye sesión de preguntas y respuestas.",
+          "imagenUrl": "https://placehold.co/400x300/10b981/ffffff?text=IA+y+%C3%89tica",
+          "etiqueta": "Tecnología"
+        }
+      ]
     },
-    {
-      "titulo": "Seminario de Inteligencia Artificial",
-      "descripcion": "Charlas sobre IA y su impacto en la industria tecnológica actual.",
-      "tipo": "Virtual",
-      "imagen": "https://source.unsplash.com/400x250/?artificial,intelligence"
+    "eventosDestacados": {
+      "titulo": "Próximos Eventos Destacados",
+      "eventos": [
+        {
+          "id": "concierto-jazz-fusion",
+          "titulo": "Concierto de Jazz Fusión",
+          "fecha": "Sábado, 20:30 - Teatro UAO",
+          "descripcionCorta": "Una mezcla electrizante de jazz moderno y ritmos latinos. ¡Imperdible!",
+          "descripcionLarga": "El reconocido ensamble 'Río Tonal' presenta su nueva producción discográfica, fusionando elementos del jazz tradicional con salsa, funk y música andina. Una experiencia sonora única que celebra la diversidad musical de Latinoamérica.",
+          "imagenUrl": "https://placehold.co/400x300/3b82f6/ffffff?text=Jazz",
+          "etiqueta": "Música"
+        },
+        {
+          "id": "expo-fotografia-urbana",
+          "titulo": "Exposición: Miradas Urbanas",
+          "fecha": "Todo el mes - Galería Central",
+          "descripcionCorta": "Muestra de fotografía documental sobre la vida en las ciudades de Colombia.",
+          "descripcionLarga": "Una colección curada de más de 50 fotografías que documentan la cotidianidad, los contrastes sociales y la arquitectura vibrante de Cali, Bogotá y Medellín. El fotógrafo estará presente en la inauguración para un conversatorio especial.",
+          "imagenUrl": "https://placehold.co/400x300/f97316/ffffff?text=Fotograf%C3%ADa",
+          "etiqueta": "Arte Visual"
+        }
+      ]
     },
-    {
-      "titulo": "Fútbol",
-      "descripcion": "Partido amistoso en las canchas de la universidad.",
-      "tipo": "Deporte",
-      "imagen": "https://source.unsplash.com/400x250/?football,soccer"
+    "categorias": {
+      "titulo": "Explora por Categoría",
+      "lista": [
+        { "nombre": "Música", "icono": "🎵" },
+        { "nombre": "Danza", "icono": "💃" },
+        { "nombre": "Teatro", "icono": "🎭" },
+        { "nombre": "Tecnología", "icono": "💻" },
+        { "nombre": "Literatura", "icono": "📚" },
+        { "nombre": "Deportes", "icono": "⚽" }
+      ]
     }
-  ],
-  "proximos": [
-    {
-      "titulo": "Festival de Música Colombiana",
-      "descripcion": "Un espacio cultural con música tradicional y moderna del país.",
-      "tipo": "Presencial",
-      "imagen": "https://source.unsplash.com/400x250/?music,concert"
-    },
-    {
-      "titulo": "Seminario de Inteligencia Artificial en la Educación",
-      "descripcion": "Evento académico sobre el uso de la IA en procesos de enseñanza.",
-      "tipo": "Virtual",
-      "imagen": "https://source.unsplash.com/400x250/?education,ai"
-    },
-    {
-      "titulo": "Torneo Intercanchas de Fútbol",
-      "descripcion": "Competencia deportiva entre equipos de diferentes facultades.",
-      "tipo": "Deporte",
-      "imagen": "https://source.unsplash.com/400x250/?soccer,stadium"
-    }
-  ],
-  "categorias": [
-    "Arte y Cultura",
-    "Tecnología e Innovación",
-    "Deporte y Bienestar",
-    "Eventos Académicos"
-  ]
+  }
 }
