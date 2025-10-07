@@ -152,7 +152,7 @@
         { "nombre": "Teatro", "icono": "🎭" },
         { "nombre": "Tecnología", "icono": "💻" },
         { "nombre": "Literatura", "icono": "📚" },
-        { "nombre": "Deportes", "icono": "⚽" }
+        { "nombre": "Deporte", "icono": "⚽" }
       ]
     }
   }
