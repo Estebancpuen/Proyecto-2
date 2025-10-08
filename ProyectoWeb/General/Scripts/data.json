@@ -4,8 +4,9 @@
     "links": [
       { "nombre": "Inicio", "url": "index.html" },
       { "nombre": "Actividades", "url": "#actividades" },
+      { "nombre": "Eventos", "url": "#eventos" },
       { "nombre": "Categorías", "url": "#categorias" },
-      { "nombre": "Contacto", "url": "#contacto" }
+      { "nombre": "Feedback", "url": "feedback.html" }
     ]
   },
   "hero": {
