@@ -28,8 +28,13 @@ a {
   background: #960000;
   padding: 15px 40px;
   color: #fff;
+  
+  /* CAMBIA 'sticky' por 'fixed' TEMPORALMENTE */
   position: sticky; 
-  top: 0;
+  top: 0; 
+  left: 0; /* <--- Asegura que empiece desde la izquierda */
+  width: 100%; /* <--- Asegura que ocupe todo el ancho */
+  
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -99,7 +104,7 @@ a {
   background: url("https://placehold.co/1200x400/1e293b/ffffff?text=Banner+Cultural") center/cover no-repeat;
   text-align: center;
   color: #fff;
-  padding: 100px 20px;
+  padding: 150px 20px 100px 20px;
   min-height: 400px; 
   display: flex;
   flex-direction: column;
@@ -200,6 +205,14 @@ a {
     margin-right: 15px; 
 }
 
+/* Sobrescribir el color para la sección DESTACADOS */
+.destacados h2 {
+    color: #111; 
+}
+.destacados h2::before {
+    background: #960000; 
+}
+
 
 /* Contenedor que centra el grid */
 .eventos-container {
@@ -287,12 +300,13 @@ a {
   background: #111;
   font-weight: 600;
 }
-.tag.Música { background: #ff6600; }
-.tag.Danza { background: #0077cc; }
-.tag.Teatro { background: #960000; }
-.tag.Tecnología { background: #28a745; }
-.tag.Literatura { background: #a855f7; }
-.tag.Deportes { background: #3b82f6; }
+.tag.Cultural { background: #ff6600; } /* NARANJA */
+.tag.Danza { background: #0077cc; } /* AZUL OSCURO */
+.tag.Sostenibilidad { background: #bbc800; } /* VERDE LIMA */
+.tag.Tecnología { background: #28a745; } /* VERDE OSCURO */
+.tag.Literatura { background: #a855f7; } /* VIOLETA */
+.tag.Deportes { background: #3b82f6; } /* AZUL CLARO */
+.tag.Teatro { background: #960000; } /* ROJO UAO (Añadido por defecto) */
 
 
 /* Estilo para el Botón "Ver Detalle" (En la tarjeta) */
@@ -321,12 +335,9 @@ a {
   padding: 80px 40px; 
 }
 
-/* Sobrescribir el color del título y barra para la sección DESTACADOS */
-.destacados h2 {
-    color: #111; /* Título oscuro sobre fondo claro */
-}
-.destacados h2::before {
-    background: #960000; /* Barra roja (mantiene el acento) */
+.destacados .card {
+  background: #fff;
+  color: #111;
 }
 
 
@@ -344,6 +355,7 @@ a {
   margin: 0 auto;
 }
 
+/* ITEM DE CATEGORÍA */
 .category-item {
     background: #960000;
     color: #fff;
@@ -355,23 +367,48 @@ a {
     border-radius: 10px;
     font-weight: bold;
     text-align: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     cursor: pointer;
 }
 
 .category-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    color: #fff;
 }
 
+/* Eliminar el espacio del icono */
 .category-icon {
-    font-size: 40px;
-    margin-bottom: 8px;
+    display: none; 
 }
 
+/* NOMBRE DE CATEGORÍA - TAMAÑO GRANDE */
 .category-name {
-    font-size: 18px;
+    font-size: 25px; /* Tamaño solicitado */
+    margin: 0; 
+    padding: 0;
 }
+
+/* HOVER DINÁMICO: La categoría toma el color de su etiqueta al pasar el cursor */
+/* Aumentamos la especificidad agrupando los selectores y usamos !important por si acaso */
+.category-item.Cultural:hover,
+.category-item.Danza:hover,
+.category-item.Sostenibilidad:hover,
+.category-item.Tecnología:hover,
+.category-item.Literatura:hover,
+.category-item.Deportes:hover,
+.category-item.Teatro:hover {
+    /* Las propiedades de hover son establecidas individualmente abajo para asegurar el color correcto */
+    /* Este grupo solo establece reglas generales si fueran necesarias */
+}
+
+.category-item.Cultural:hover { background: #ff6600 !important; }
+.category-item.Danza:hover { background: #0077cc !important; }
+.category-item.Sostenibilidad:hover { background: #bbc800 !important; }
+.category-item.Tecnología:hover { background: #28a745 !important; }
+.category-item.Literatura:hover { background: #a855f7 !important; }
+.category-item.Deportes:hover { background: #3b82f6 !important; }
+.category-item.Teatro:hover { background: #960000 !important; }
 
 
 /* Footer */
