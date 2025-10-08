@@ -1,23 +1,9 @@
-/* Importación de tipografías locales */
-
-@font-face {
-  font-family: 'Inter';
-  src: url('ProyectoWeb/General/recursos/Inter-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('ProyectoWeb/General/recursos/Inter-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
+/* Importación de tipografías locales - ELIMINADAS. Ahora se usa Google Fonts */
 
 /* General */
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif; /* APLICACIÓN DE MONTSERRAT */
   background: #f8f8f8;
   color: #111;
   scroll-behavior: smooth;
@@ -65,7 +51,7 @@ a {
   position: relative;
 }
 
-/* Nuevo: Efecto de línea en el hover del navbar */
+/* Efecto de línea en el hover del navbar */
 .nav-links a:after {
     content: '';
     position: absolute;
@@ -122,7 +108,6 @@ a {
   position: relative;
 }
 
-/* Mejoras: Degradado de acoplamiento en el Hero */
 .hero::before {
     content: '';
     position: absolute;
@@ -154,14 +139,13 @@ a {
   margin-bottom: 30px;
 }
 
-/* Mejoras: Botón primario más impactante */
 .btn-primary {
   background: #960000;
   color: #fff;
-  padding: 14px 35px; /* Más grande */
+  padding: 14px 35px; 
   border-radius: 6px;
   font-weight: bold;
-  box-shadow: 0 8px 15px rgba(150, 0, 0, 0.4); /* Sombra de acento */
+  box-shadow: 0 8px 15px rgba(150, 0, 0, 0.4); 
   transition: all 0.3s ease;
 }
 
@@ -172,19 +156,50 @@ a {
 }
 
 
+/* SEPARADOR VISUAL ENTRE SECCIONES */
+.section-separator {
+    width: 100%;
+    height: 1px;
+    background: #ddd; /* Línea gris muy clara */
+    margin: 40px 0; /* Espacio antes y después de la línea */
+}
+.destacados + .section-separator {
+    /* Ocultar el separador si la sección destacada va seguida de un separador */
+    display: none; 
+}
+
+
 /* Secciones (Base) */
 .eventos-section {
   padding: 60px 40px;
 }
 
-/* Mejoras: Estilos de los títulos h2 */
+/* ESTILO DE TÍTULOS H2 CON BARRA ROJA Y CENTRADO */
 .eventos-section h2, .categorias-section h2 {
-    font-size: 2.2rem; /* Más grande */
+    font-size: 2.2rem; 
     font-weight: 700;
-    margin-bottom: 40px; /* Más espacio */
-    text-align: center;
-    color: #960000; /* Rojo */
+    margin-bottom: 40px; 
+    text-align: left; 
+    color: #111; 
+    display: flex; 
+    align-items: center;
+    
+    /* PROPIEDADES AÑADIDAS PARA CENTRAR EL BLOQUE DEL TÍTULO */
+    max-width: 1000px; 
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.eventos-section h2::before, .categorias-section h2::before {
+    content: '';
+    display: inline-block;
+    width: 5px; 
+    height: 40px; 
+    background: #960000; 
+    margin-right: 15px; 
+}
+
 
 /* Contenedor que centra el grid */
 .eventos-container {
@@ -201,7 +216,7 @@ a {
   width: 100%;
 }
 
-/* Mejoras: Sección de Actividades (fondo blanco y elevada) */
+/* Sección de Actividades (fondo blanco y elevada) */
 #actividades {
     background: #ffffff; 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
@@ -222,7 +237,6 @@ a {
     color: inherit; 
 }
 
-/* Mejoras: Sombra más pronunciada en hover */
 .card-evento:hover {
     transform: translateY(-7px); 
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
@@ -273,7 +287,6 @@ a {
   background: #111;
   font-weight: 600;
 }
-/* Colores de etiquetas personalizados para eventos */
 .tag.Música { background: #ff6600; }
 .tag.Danza { background: #0077cc; }
 .tag.Teatro { background: #960000; }
@@ -285,11 +298,9 @@ a {
 /* Estilo para el Botón "Ver Detalle" (En la tarjeta) */
 .card-evento .btn-secondary {
     display: block; 
-    width: auto; /* Ajuste para que no sea excesivamente ancho */
-    
+    width: auto; 
     margin: 15px auto 20px auto; 
-    
-    padding: 10px 40px; /* Reducción de padding */
+    padding: 10px 40px; 
     border-radius: 6px;
     background: #960000; 
     color: #fff;
@@ -303,20 +314,21 @@ a {
     background: #b30000;
 }
 
-/* Próximos eventos Destacados */
+/* Próximos eventos Destacados: NUEVO COLOR DE FONDO */
 .destacados {
-  background: #960000;
-  color: #fff;
-  padding: 80px 40px; /* Más padding */
-}
-.destacados h2 {
-    color: #fff; /* Título blanco sobre fondo rojo */
+  background: #fbf5ec; /* Color crema/cálido */
+  color: #111; /* Texto oscuro para el fondo claro */
+  padding: 80px 40px; 
 }
 
-.destacados .card {
-  background: #fff;
-  color: #111;
+/* Sobrescribir el color del título y barra para la sección DESTACADOS */
+.destacados h2 {
+    color: #111; /* Título oscuro sobre fondo claro */
 }
+.destacados h2::before {
+    background: #960000; /* Barra roja (mantiene el acento) */
+}
+
 
 /* Categorías */
 .categorias-section {
@@ -370,7 +382,7 @@ footer {
     padding: 30px 20px;
 }
 
-/* 1. Estilos Base del Botón de Feedback en Footer */
+/* Botón de Feedback en Footer */
 footer .btn-secondary {
     background: #fff;
     color: #960000;
@@ -383,7 +395,6 @@ footer .btn-secondary {
     cursor: pointer; 
 }
 
-/* 2. Estilos de Hover (Botón de Feedback) */
 footer .btn-secondary:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 18px rgba(255, 255, 255, 0.16);
@@ -401,11 +412,23 @@ footer .btn-secondary:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* TÍTULO DE FEEDBACK: Mantenido centrado y sin barra (Exclusión) */
 .feedback-container h2 {
     text-align: center;
     color: #960000;
     margin-bottom: 30px;
+    display: block; 
+    font-size: 26px; 
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+    width: auto;
 }
+
+.feedback-container h2::before {
+    content: none; /* Elimina la barra roja */
+}
+
 
 .feedback-form label {
     display: block;
@@ -423,7 +446,7 @@ footer .btn-secondary:hover {
     border: 1px solid #ddd;
     border-radius: 6px;
     box-sizing: border-box; 
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif; 
     resize: vertical; 
 }
 
