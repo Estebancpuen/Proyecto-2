@@ -147,12 +147,12 @@
     "categorias": {
       "titulo": "Explora por Categoría",
       "lista": [
-        { "nombre": "Música", "icono": "🎵" },
+        { "nombre": "Cultural", "icono": "🌍​" },
         { "nombre": "Danza", "icono": "💃" },
-        { "nombre": "Teatro", "icono": "🎭" },
+        { "nombre": "Sostenibilidad", "icono": "♻️​" },
         { "nombre": "Tecnología", "icono": "💻" },
         { "nombre": "Literatura", "icono": "📚" },
-        { "nombre": "Deporte", "icono": "⚽" }
+        { "nombre": "Deportes", "icono": "⚽" }
       ]
     }
   }

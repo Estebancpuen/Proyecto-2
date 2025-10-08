@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Eventos por Categoría UAO</title>
+    <link rel="stylesheet" href="style.css"/> 
+    <style>
+        /* Estilo para espaciar el contenido y asegurar que el título se vea bien */
+        .categoria-hero {
+            padding: 20px 40px;
+            background-color: #960000;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .categoria-hero h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+        /* Ajuste para la sección de eventos en esta página */
+        #eventos-filtrados-section {
+            padding-top: 40px; 
+            min-height: 50vh; /* Asegura un mínimo de altura */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">UAO</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#actividades">Actividades</a></li>
+                <li><a href="index.html#eventos">Eventos</a></li>
+                <li><a href="index.html#categorias">Categorías</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar..." id="searchInput"/>
+                <button id="searchBtn">🔍</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="categoria-hero">
+        <h1 id="categoriaTitulo">Cargando Categoría...</h1>
+    </section>
+
+    <section id="eventos-filtrados-section" class="eventos-section">
+        <div class="eventos-container">
+            <div class="eventos-grid" id="eventosFiltradosGrid">
+                <p id="loadingMessage">Cargando eventos...</p>
+            </div>
+        </div>
+    </section>
+
+<footer>
+    <div class="footer-content">
+        <a href="feedback.html" class="btn-secondary">Enviar Feedback</a>
+        <p>© 2025 Universidad Autónoma de Occidente</p>
+    </div>
+</footer>
+
+    <script src="categoria.js"></script>
+
+</body>
+</html>

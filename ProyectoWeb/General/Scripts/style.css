@@ -141,6 +141,7 @@ a {
   font-size: 26px;
   margin-bottom: 30px;
   text-align: center;
+  color: #960000;
 }
 
 /* Contenedor que centra el grid */
@@ -273,6 +274,13 @@ a {
   padding: 60px 40px;
 }
 
+.categorias-section h2 {
+    font-size: 26px;
+    margin-bottom: 30px;
+    text-align: center; /* Esto lo centra */
+    color: #960000; /* Esto lo pone rojo */
+}
+
 .categorias-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -313,27 +321,37 @@ a {
 
 
 /* Footer */
+/* Footer */
 footer {
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 30px 20px;
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    /* Asegúrate de que nada aquí fuerce un cursor 'default' */
+    cursor: default; /* Puedes dejarlo en default para el footer, ya que el link lo sobrescribirá */
 }
 
+/* 1. Estilos Base del Botón */
 footer .btn-secondary {
-  background: #fff;
-  color: #960000;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 6px;
-  margin-bottom: 15px;
-  display: inline-block;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+    background: #fff;
+    color: #960000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: inline-block;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.3s; 
+    /* EXPLÍCITAMENTE AGREGAMOS CURSOR POINTER al elemento <a> */
+    cursor: pointer; 
 }
 
+/* 2. Estilos de Hover (Efecto de elevación y color de fondo) */
 footer .btn-secondary:hover {
+    /* Efecto de elevación */
     transform: translateY(-3px);
     box-shadow: 0 8px 18px rgba(255, 255, 255, 0.16);
+    /* Añadimos un pequeño cambio de color para hacerlo más obvio */
+    background: #e6e6e6; /* Blanco ligeramente más oscuro en hover */
 }
 
 /* style.css */
@@ -342,4 +360,59 @@ footer .btn-secondary:hover {
   background: #960000;
   color: #fff;
   /* ... */
+}
+
+
+/* Estilos Específicos para Feedback */
+.feedback-container {
+    padding: 80px 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-container h2 {
+    text-align: center;
+    color: #960000;
+    margin-bottom: 30px;
+}
+
+.feedback-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* Crucial para que el padding no desborde el ancho */
+    font-family: 'Inter', sans-serif;
+    resize: vertical; /* Permite redimensionar solo verticalmente el textarea */
+}
+
+.feedback-form button {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    padding: 12px;
+    background: #960000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.feedback-form button:hover {
+    background: #b30000;
 }

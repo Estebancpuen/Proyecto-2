@@ -119,17 +119,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     }
 
-    function renderCategories(elementId, categorias) {
-        const grid = document.getElementById(elementId);
-        if (!grid) return;
 
-        grid.innerHTML = categorias.map(cat => `
-            <div class="category-item">
+
+function renderCategories(elementId, categorias) {
+    const grid = document.getElementById(elementId);
+    if (!grid) return;
+
+    grid.innerHTML = categorias.map(cat => {
+        // Enlace a la nueva página de esquema, pasando el nombre de la categoría como parámetro
+        const linkUrl = `categoria.html?nombre=${encodeURIComponent(cat.nombre)}`;
+
+        return `
+            <a href="${linkUrl}" class="category-item">
                 <div class="category-icon">${cat.icono}</div>
                 <h3 class="category-name">${cat.nombre}</h3>
-            </div>
-        `).join('');
-    }
+            </a>
+        `;
+    }).join('');
+}
+
+
 
     // Inicializar la carga de datos
     loadDataAndRender();
