@@ -101,7 +101,7 @@ a {
 
 /* Hero */
 .hero {
-  background: url("https://placehold.co/1200x400/1e293b/ffffff?text=Banner+Cultural") center/cover no-repeat;
+  background: url("../recursos/Cultural.JPG") center/cover no-repeat;
   text-align: center;
   color: #fff;
   padding: 150px 20px 100px 20px;
