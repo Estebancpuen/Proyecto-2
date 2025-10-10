@@ -597,5 +597,28 @@ footer .btn-secondary:hover {
     }
 }
 
+/* --- ESTILOS ADICIONALES PARA EL MENSAJE DE ÉXITO DE FEEDBACK --- */
+
+/* La clase feedback-container ya le da el fondo y el margen */
+.success-message-state {
+    /* Forzar que el contenedor se vea bien en estado de éxito */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.success-message-state h2 {
+    color: #28a745; /* Color verde para el éxito */
+    font-size: 2rem !important; /* Ajuste el tamaño del título */
+    margin-bottom: 20px !important;
+}
+
+.success-message-state p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
 .tag.Ecológico { background: #10b981; } /* 🌳 Verde Esmeralda para Ecológico */
 .tag.Bienestar { background: #f472b6; }

@@ -5,42 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Enviar Feedback - UAO</title>
     <link rel="stylesheet" href="style.css"/> 
-</head>
+    <link rel="stylesheet" href="feedback.css"/> </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">Bitácora Cultural UAO
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="index.html#actividades">Actividades</a></li>
-                <li><a href="index.html#eventos">Eventos</a></li>
-                <li><a href="index.html#categorias">Categorías</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#actividades">Actividades</a></li>
+                <li><a href="index.html#eventos">Eventos</a></li>
+                <li><a href="index.html#categorias">Categorías</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="feedback-container">
-        <h2>Envíanos tu Opinión y Sugerencias</h2>
-        <form class="feedback-form">
-            <label for="nombre">Nombre (opcional):</label>
-            <input type="text" id="nombre" name="nombre">
+    <main id="main-content">
+        <section class="feedback-container" id="feedback-form-section">
+            <h2>Envíanos tu Opinión y Sugerencias</h2>
+            <form class="feedback-form" id="feedbackForm">
+                <label for="nombre">Nombre (opcional):</label>
+                <input type="text" id="nombre" name="nombre">
 
-            <label for="email">Correo Electrónico (opcional):</label>
-            <input type="email" id="email" name="email">
+                <label for="email">Correo Electrónico (opcional):</label>
+                <input type="email" id="email" name="email">
 
-            <label for="mensaje">Tu Mensaje o Sugerencia: <span style="color:red">*</span></label>
-            <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+                <label for="mensaje">Tu Mensaje o Sugerencia: <span style="color:red">*</span></label>
+                <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
 
-            <button type="submit">Enviar Comentario</button>
-        </form>
-    </section>
-    
+                <button type="submit">Enviar Comentario</button>
+            </form>
+        </section>
+
+        <section id="success-message" class="feedback-container success-message-state" style="display: none;">
+            <h2>¡Comentario Enviado con Éxito! 🎉</h2>
+            <p>Gracias por tu opinión. Tu feedback es muy valioso para mejorar nuestros eventos y actividades.</p>
+            <a href="index.html" class="btn-primary" style="margin-top: 20px;">Volver a la Página Principal</a>
+        </section>
+    </main>
+
     <footer>
         <div class="footer-content">
             <p>© 2025 Universidad Autónoma de Occidente</p>
         </div>
     </footer>
 
+    <script src="feedback.js"></script> 
 </body>
 </html>
