@@ -421,9 +421,10 @@ a {
 .category-item.Tecnología:hover,
 .category-item.Literatura:hover,
 .category-item.Deportes:hover,
-.category-item.Teatro:hover {
+.category-item.Teatro:hover, /* COMA AÑADIDA */
+.category-item.Bienestar:hover, /* COMA AÑADIDA */
+.category-item.Ecológico:hover { /* COMA AÑADIDA Y CORRECCIÓN ORTOGRÁFICA: Ecologico -> Ecológico */
     /* Las propiedades de hover son establecidas individualmente abajo para asegurar el color correcto */
-    /* Este grupo solo establece reglas generales si fueran necesarias */
 }
 
 .category-item.Cultural:hover { background: #ff6600 !important; }
@@ -433,6 +434,10 @@ a {
 .category-item.Literatura:hover { background: #a855f7 !important; }
 .category-item.Deportes:hover { background: #3b82f6 !important; }
 .category-item.Teatro:hover { background: #960000 !important; }
+
+/* 💖 CORRECCIÓN CLAVE: Se asignan los colores únicos y se corrige la ortografía. */
+.category-item.Bienestar:hover { background: #f472b6 !important; } /* Rosa */
+.category-item.Ecológico:hover { background: #10b981 !important; } /* Verde */
 
 
 /* Footer */
@@ -589,3 +594,6 @@ footer .btn-secondary:hover {
         grid-template-columns: 1fr;
     }
 }
+
+.tag.Ecológico { background: #10b981; } /* 🌳 Verde Esmeralda para Ecológico */
+.tag.Bienestar { background: #f472b6; }
