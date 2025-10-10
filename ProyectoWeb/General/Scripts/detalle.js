@@ -163,3 +163,76 @@ function renderError(message, container) {
         </div>
     `;
 }
+
+// Agrega esta función de sonido en cualquier parte de detalle.js (afuera de DOMContentLoaded)
+function attachDetailSound() {
+    const clickSound = new Audio('recursos/digital-click-357350.mp3'); 
+    
+    // Selecciona los botones que acaban de ser inyectados
+    const actionButtons = document.querySelectorAll(
+        // Asegúrate de incluir el botón de inscripción:
+        '.btn-action-secondary, .btn-inscripcion, .error-state a, nav a' 
+    );
+
+    actionButtons.forEach(button => {
+        // Solo agrega el listener si no lo tiene
+        if (!button.hasAttribute('data-sound-attached')) {
+            button.addEventListener('click', () => {
+                clickSound.pause();
+                clickSound.currentTime = 0;
+                clickSound.play().catch(error => {
+                    // Captura el error de reproducción, que es normal en algunos navegadores
+                });
+            });
+            button.setAttribute('data-sound-attached', 'true');
+        }
+    });
+}
+
+
+/**
+ * Carga el JSON, busca el evento por ID y lo renderiza.
+ * @param {string} id - El ID del evento a buscar.
+ * @param {HTMLElement} container - El elemento donde se renderizará el contenido.
+ */
+async function fetchAndRenderEvent(id, container) {
+    try {
+        const response = await fetch('data.json');
+        if (!response.ok) {
+            throw new Error('No se pudo cargar el archivo data.json');
+        }
+        const data = await response.json();
+        
+        let todosLosEventos = [];
+        // ... (Tu lógica de concatenación de eventos sigue aquí) ...
+        if (data.secciones && data.secciones.actividadesSemana && data.secciones.actividadesSemana.eventos) {
+            todosLosEventos = todosLosEventos.concat(data.secciones.actividadesSemana.eventos);
+        }
+        if (data.secciones && data.secciones.eventosDestacados && data.secciones.eventosDestacados.eventos) {
+            todosLosEventos = todosLosEventos.concat(data.secciones.eventosDestacados.eventos);
+        }
+
+        const eventoEncontrado = todosLosEventos.find(e => e.id === id);
+
+        if (eventoEncontrado) {
+        container.innerHTML = renderEventDetail(eventoEncontrado);
+            
+            // 🔥 LLAMADA CLAVE: Se ejecuta inmediatamente después de inyectar el HTML
+            attachDetailSound(); 
+        } else {
+            renderError(`Evento con ID "${id}" no encontrado en ninguna sección.`, container);
+        }
+
+    } catch (error) {
+        console.error("Error al cargar o renderizar el evento:", error);
+        renderError(`Ocurrió un error al cargar los datos: ${error.message}`, container);
+    }
+}
+
+// **DEBES ELIMINAR ESTE BLOQUE** que tenías al final, porque intenta seleccionar 
+// los botones antes de que existan:
+/*
+document.addEventListener('DOMContentLoaded', () => {
+    // ... tu código de sonido anterior ...
+});
+*/

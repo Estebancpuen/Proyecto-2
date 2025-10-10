@@ -49,7 +49,6 @@ async function fetchAndFilterEvents(categoria, gridElement, loadingMessage) {
             todosLosEventos = todosLosEventos.concat(data.secciones.actividadesSemana.eventos);
         }
         
-        // CORRECCIÓN APLICADA AQUÍ: Usa 'todosLosEventos' en ambos lados
         if (data.secciones?.eventosDestacados?.eventos) {
             todosLosEventos = todosLosEventos.concat(data.secciones.eventosDestacados.eventos);
         }
@@ -57,8 +56,6 @@ async function fetchAndFilterEvents(categoria, gridElement, loadingMessage) {
         // FILTRADO CLAVE: Buscar todos los eventos cuya 'etiqueta' coincida con la categoría
         const eventosFiltrados = todosLosEventos.filter(evento => 
             evento.etiqueta === categoria // Filtra por la clave 'etiqueta'
-            // Ya que tu data.json solo usa la clave 'etiqueta' o 'etiqueta' + 'categoria', 
-            // nos quedamos solo con 'etiqueta' para ser más concisos y consistentes con la data.
         );
         
         loadingMessage.style.display = 'none'; // Oculta el mensaje de carga
@@ -66,6 +63,9 @@ async function fetchAndFilterEvents(categoria, gridElement, loadingMessage) {
         if (eventosFiltrados.length > 0) {
             // Reutilizamos la función de renderizado de la cuadrícula de eventos
             renderEventGridFiltered(gridElement.id, eventosFiltrados);
+            
+            // 🔥 MODIFICACIÓN CLAVE: Llamar a la función de sonido aquí
+            attachClickSound(); 
         } else {
             gridElement.innerHTML = `
                 <div class="w-full text-center p-12 bg-gray-100 rounded-lg shadow-sm">
@@ -73,7 +73,6 @@ async function fetchAndFilterEvents(categoria, gridElement, loadingMessage) {
                     <p class="text-md text-gray-500 mt-2">¡Vuelve pronto para ver las novedades!</p>
                 </div>
             `;
-            // Aseguramos que la cuadrícula desaparezca si no hay contenido
             gridElement.style.display = 'block'; 
             gridElement.style.maxWidth = '1000px'; 
         }
@@ -128,4 +127,30 @@ function renderEventGridFiltered(elementId, eventos) {
             </div>
         `;
     }).join('');
+}
+
+/**
+ * Asigna el sonido de click a los enlaces de "Ver Detalle" después del renderizado.
+ */
+function attachClickSound() {
+    // La ruta es relativa al HTML de la subpágina (categoria.html)
+    const clickSound = new Audio('recursos/digital-click-357350.mp3');
+    // Selecciona los enlaces de las tarjetas que acaban de ser inyectadas
+     const detailLinks = document.querySelectorAll(
+        '.card-evento a.btn-secondary, nav a' // <-- ¡Añadido nav a!
+    );
+
+    detailLinks.forEach(link => {
+        // Evita asignar el listener dos veces
+        if (!link.hasAttribute('data-sound-attached')) {
+            link.addEventListener('click', () => {
+                clickSound.pause();
+                clickSound.currentTime = 0;
+                clickSound.play().catch(error => {
+                    // Si falla la reproducción, no pasa nada
+                });
+            });
+            link.setAttribute('data-sound-attached', 'true');
+        }
+    });
 }

@@ -22,6 +22,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- FUNCIONES DE MANEJO DE SONIDO ---
+    // NOTA: Esta función DEBE definirse antes de ser llamada en loadDataAndRender.
+    function setupClickSound(audioPath) {
+        // 1. Inicializar el objeto de audio.
+        const clickSound = new Audio(audioPath);
+
+        // 2. Seleccionar todos los elementos clicables que queremos afectar.
+        // Incluye: Enlaces de Navbar, Botón Explorar (.btn-primary), Botones de Tarjeta (.btn-secondary), Botones de Categoría (.category-item).
+       const clicableElements = document.querySelectorAll(
+        '.nav-links a, .btn-primary, .card-evento a.btn-secondary, .category-item, a[href^="#"]' // <-- ¡Añadido a[href^="#"]!
+    );
+
+        // 3. Añadir el Event Listener a cada elemento
+        clicableElements.forEach(element => {
+            element.addEventListener('click', (e) => {
+                // Detener y rebobinar el sonido si ya se estaba reproduciendo (para clicks rápidos)
+                clickSound.pause();
+                clickSound.currentTime = 0;
+                
+                // 4. Reproducir el sonido.
+                clickSound.play().catch(error => {
+                    console.log("No se pudo reproducir el sonido de click:", error.message);
+                });
+            });
+        });
+    }
+
+
     // Función principal para cargar y renderizar datos
     async function loadDataAndRender() {
         try {
@@ -35,16 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 3. Renderizar Actividades Semanales 
             renderEventGrid('actividadesGrid', data.secciones.actividadesSemana.eventos, false);
-            // NOTA: Tu HTML no tiene un <h2> con ID, así que el título queda estático por ahora.
-
-            // 4. Renderizar Eventos Destacados (ID CORREGIDO A 'eventosGrid' según tu HTML)
+            
+            // 4. Renderizar Eventos Destacados
             renderEventGrid('eventosGrid', data.secciones.eventosDestacados.eventos, true);
-            // NOTA: Tu HTML usa 'eventosGrid' en lugar de 'destacadosGrid'.
 
             // 5. Renderizar Categorías
             renderCategories('categoriasGrid', data.secciones.categorias.lista);
-            // NOTA: Tu HTML no tiene un <h2> con ID, así que el título queda estático por ahora.
 
+            // *** 6. LLAMADA CLAVE: Asignar el sonido después de que todos los elementos dinámicos han sido creados ***
+            setupClickSound('recursos/digital-click-357350.mp3');
+            
         } catch (error) {
             // Este es el catch que genera tu mensaje de error
             console.error('Fallo Crítico al Iniciar la Aplicación:', error);
@@ -120,43 +148,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    function renderCategories(elementId, categorias) {
+        const grid = document.getElementById(elementId);
+        if (!grid) return;
 
-function renderCategories(elementId, categorias) {
-    const grid = document.getElementById(elementId);
-    if (!grid) return;
+        grid.innerHTML = categorias.map(cat => {
+            // Enlace a la nueva página de esquema, pasando el nombre de la categoría como parámetro
+            const linkUrl = `categoria.html?nombre=${encodeURIComponent(cat.nombre)}`;
 
-    grid.innerHTML = categorias.map(cat => {
-        // Enlace a la nueva página de esquema, pasando el nombre de la categoría como parámetro
-        const linkUrl = `categoria.html?nombre=${encodeURIComponent(cat.nombre)}`;
-
-        return `
-            <a href="${linkUrl}" class="category-item">
-                <div class="category-icon">${cat.icono}</div>
-                <h3 class="category-name">${cat.nombre}</h3>
-            </a>
-        `;
-    }).join('');
-}
-
+            return `
+                <a href="${linkUrl}" class="category-item ${cat.nombre}">
+                    <div class="category-icon">${cat.icono}</div>
+                    <h3 class="category-name">${cat.nombre}</h3>
+                </a>
+            `;
+        }).join('');
+    }
 
 
     // Inicializar la carga de datos
     loadDataAndRender();
-});
+}); // CIERRE: document.addEventListener('DOMContentLoaded')
 
+
+// Lógica de Scroll Suave (puede estar fuera del DOMContentLoaded si no depende de la carga dinámica)
 document.querySelectorAll('a[href^="#"]').forEach(enlace => {
-  enlace.addEventListener('click', function(e) {
-    e.preventDefault();
-    const destino = document.querySelector(this.getAttribute('href'));
-    if (destino) {
-      window.scrollTo({
-        top: destino.offsetTop - 60, // ajusta según la altura del navbar
-        behavior: 'smooth'
-      });
-    }
-  });
+    enlace.addEventListener('click', function(e) {
+        e.preventDefault();
+        const destino = document.querySelector(this.getAttribute('href'));
+        if (destino) {
+            window.scrollTo({
+                top: destino.offsetTop - 60, // ajusta según la altura del navbar
+                behavior: 'smooth'
+            });
+        }
+    });
 });
-// (¡AQUÍ TERMINA EL ARCHIVO, SIN LLAVE EXTRA!)
 
 
 

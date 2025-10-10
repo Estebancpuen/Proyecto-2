@@ -336,13 +336,15 @@
     "categorias": {
       "titulo": "Explora por Categoría",
       "lista": [
-        { "nombre": "Cultural", "icono": "🌍​" },
-        { "nombre": "Danza", "icono": "💃" },
-        { "nombre": "Sostenibilidad", "icono": "♻️​" },
-        { "nombre": "Tecnología", "icono": "💻" },
-        { "nombre": "Literatura", "icono": "📚" },
-        { "nombre": "Deportes", "icono": "⚽" }
-      ]
+      { "nombre": "Cultural", "icono": "🌍​" },
+      { "nombre": "Danza", "icono": "💃" },
+      { "nombre": "Sostenibilidad", "icono": "♻️​" },
+      { "nombre": "Ecológico", "icono": "🌱" },      
+      { "nombre": "Bienestar", "icono": "🧘‍♀️" },    
+      { "nombre": "Tecnología", "icono": "💻" },
+      { "nombre": "Literatura", "icono": "📚" },
+      { "nombre": "Deportes", "icono": "⚽" }
+    ]
     }
   }
 }
