@@ -23,7 +23,7 @@ a {
 /* Navbar */
 .navbar {
   display: flex;
-    justify-content: flex-start; /* Mueve todo al inicio (izquierda) */
+    justify-content: space-between; /* Mueve todo al inicio (izquierda) */
     align-items: center;
     background: #960000;
     padding: 15px 40px;
@@ -41,13 +41,24 @@ a {
 .navbar .logo {
   font-size: 22px;
   font-weight: bold;
+  width: 220px;
+}
+
+.navbar::after {
+    content: ''; /* Es un pseudo-elemento, necesita contenido */
+    display: block;
+    /* CLAVE: Dale el mismo ancho que le diste al .logo */
+    width: 220px; 
+    /* Lo hacemos transparente para que no se vea */
+    visibility: hidden; 
 }
 
 .nav-links {
   list-style: none;
     display: flex;
     gap: 25px;
-    margin-left: 590px; 
+    margin-left: auto; 
+    margin-right: auto;
 }
 
 .nav-links a {
@@ -536,4 +547,45 @@ footer .btn-secondary:hover {
 
 .hero-video::-moz-media-controls {
     display: none !important;
+}
+
+.eventos-grid-page {
+    /* Anula la configuración de Flexbox del carrusel */
+    display: grid !important; 
+    flex-wrap: wrap !important; 
+    overflow-x: hidden !important; 
+    
+    /* Define la cuadrícula de 3 columnas flexibles */
+    grid-template-columns: repeat(3, 1fr);
+    
+    /* Configuración de espaciado y ancho */
+    gap: 25px;
+    max-width: 1000px;
+    width: 100%;
+    
+    /* Asegura que las tarjetas individuales se comporten como ítems de grid */
+    padding-bottom: 0 !important; /* Quitar el padding del scroll */
+}
+
+/* Ajuste importante para que las tarjetas se adapten al grid */
+.eventos-grid-page .card-evento {
+    /* Anula el ancho fijo y las propiedades del carrusel */
+    flex: 1 1 auto; /* Permite crecer y encoger dentro de la celda */
+    width: auto; /* Permite que el ancho lo controle el Grid (1fr) */
+}
+
+
+/* Adaptabilidad para que las 3 columnas no rompan el diseño en móvil */
+@media (max-width: 992px) {
+    .eventos-grid-page {
+        /* Reduce a 2 columnas en tabletas */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .eventos-grid-page {
+        /* Reduce a 1 columna en móviles */
+        grid-template-columns: 1fr;
+    }
 }
