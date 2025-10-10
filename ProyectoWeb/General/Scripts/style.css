@@ -331,6 +331,7 @@ a {
 .tag.Literatura { background: #a855f7; } /* VIOLETA */
 .tag.Deportes { background: #3b82f6; } /* AZUL CLARO */
 .tag.Teatro { background: #960000; } /* ROJO UAO (Añadido por defecto) */
+.tag.Formativo { background: #96004d; }
 
 
 /* Estilo para el Botón "Ver Detalle" (En la tarjeta) */
@@ -423,7 +424,9 @@ a {
 .category-item.Deportes:hover,
 .category-item.Teatro:hover, /* COMA AÑADIDA */
 .category-item.Bienestar:hover, /* COMA AÑADIDA */
-.category-item.Ecológico:hover { /* COMA AÑADIDA Y CORRECCIÓN ORTOGRÁFICA: Ecologico -> Ecológico */
+.category-item.Ecológico:hover, 
+.category-item.Formativo:hover { /* COMA AÑADIDA Y CORRECCIÓN ORTOGRÁFICA: Ecologico -> Ecológico */
+
     /* Las propiedades de hover son establecidas individualmente abajo para asegurar el color correcto */
 }
 
@@ -434,10 +437,9 @@ a {
 .category-item.Literatura:hover { background: #a855f7 !important; }
 .category-item.Deportes:hover { background: #3b82f6 !important; }
 .category-item.Teatro:hover { background: #960000 !important; }
-
-/* 💖 CORRECCIÓN CLAVE: Se asignan los colores únicos y se corrige la ortografía. */
 .category-item.Bienestar:hover { background: #f472b6 !important; } /* Rosa */
 .category-item.Ecológico:hover { background: #10b981 !important; } /* Verde */
+.category-item.Formativo:hover { background: #96004d !important; }
 
 
 /* Footer */

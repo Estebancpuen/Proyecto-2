@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Llama a la única función fetchAndRenderEvent
     fetchAndRenderEvent(eventId, eventoDetalleContainer);
 });
 
@@ -37,12 +38,12 @@ async function fetchAndRenderEvent(id, container) {
         let todosLosEventos = [];
 
         // 1. Añadir eventos de Actividades de la Semana
-        if (data.secciones && data.secciones.actividadesSemana && data.secciones.actividadesSemana.eventos) {
+        if (data.secciones?.actividadesSemana?.eventos) {
             todosLosEventos = todosLosEventos.concat(data.secciones.actividadesSemana.eventos);
         }
 
         // 2. Añadir eventos de Próximos Eventos Destacados
-        if (data.secciones && data.secciones.eventosDestacados && data.secciones.eventosDestacados.eventos) {
+        if (data.secciones?.eventosDestacados?.eventos) {
             todosLosEventos = todosLosEventos.concat(data.secciones.eventosDestacados.eventos);
         }
 
@@ -50,7 +51,11 @@ async function fetchAndRenderEvent(id, container) {
         const eventoEncontrado = todosLosEventos.find(e => e.id === id);
 
         if (eventoEncontrado) {
+            // 1. Inyecta el HTML
             container.innerHTML = renderEventDetail(eventoEncontrado);
+            
+            // 2. 🔥 LLAMADA CLAVE: Adjunta los listeners de sonido SOLO después de que el HTML existe.
+            attachDetailSound(); 
         } else {
             // Si el ID es válido pero no se encuentra en NINGUNA lista.
             renderError(`Evento con ID "${id}" no encontrado en ninguna sección.`, container);
@@ -58,8 +63,6 @@ async function fetchAndRenderEvent(id, container) {
 
     } catch (error) {
         console.error("Error al cargar o renderizar el evento:", error);
-        // El error literal "Cannot read properties of null..." se resuelve 
-        // porque ahora revisamos la existencia de data.secciones antes de acceder.
         renderError(`Ocurrió un error al cargar los datos: ${error.message}`, container);
     }
 }
@@ -70,30 +73,43 @@ async function fetchAndRenderEvent(id, container) {
  * @returns {string} El HTML generado.
  */
 function renderEventDetail(evento) {
-    // 1. Extracción de datos de metadatos (ahora desde los campos separados)
-    const fechaISO = evento.fecha; // Espera formato 'YYYY-MM-DD'
+    // 1. Extracción de datos de metadatos 
+    // Usamos el operador de encadenamiento opcional (?) para hacer el código más limpio
+    const fechaCompleta = evento.fechaCompleta || evento.fecha; 
     const horaTexto = evento.hora || '09:00-17:00'; 
     const ubicacionTexto = evento.ubicacion || 'Lugar no especificado';
     const capacidadTexto = evento.capacidad || 'N/A';
     const organizaTexto = evento.organiza || 'No especificado';
     
     // 2. Procesamiento de la fecha para los bloques de metadatos
-    let dia = '25';
-    let mes = 'NOV';
-    let diaSemana = 'Viernes';
+    let dia = '';
+    let mes = '';
+    let diaSemana = '';
+    let rangoHora = horaTexto;
     
-    try {
-        const fechaObj = new Date(fechaISO + 'T12:00:00'); // Añadimos hora para evitar problemas de zona horaria
-        if (!isNaN(fechaObj)) {
-            dia = fechaObj.getDate().toString();
-            mes = fechaObj.toLocaleString('es-ES', { month: 'short' }).toUpperCase().replace('.', ''); // Ej. NOV
-            diaSemana = fechaObj.toLocaleString('es-ES', { weekday: 'long' });
+    // Intentamos parsear la fecha si se parece a 'YYYY-MM-DD' o si se pasa un campo 'fechaISO'
+    const fechaParaParsear = evento.fechaISO || (fechaCompleta && fechaCompleta.match(/^\d{4}-\d{2}-\d{2}$/) ? fechaCompleta : null);
+
+    if (fechaParaParsear) {
+        try {
+            // Añadimos hora para evitar problemas de zona horaria al parsear solo la fecha
+            const fechaObj = new Date(fechaParaParsear + 'T12:00:00'); 
+            if (!isNaN(fechaObj)) {
+                dia = fechaObj.getDate().toString();
+                // toLocaleString para obtener MES y DÍA SEMANA en español
+                mes = fechaObj.toLocaleString('es-ES', { month: 'short' }).toUpperCase().replace('.', ''); 
+                diaSemana = fechaObj.toLocaleString('es-ES', { weekday: 'long' });
+            }
+        } catch (e) {
+            console.error("Error al procesar la fecha ISO:", e);
         }
-    } catch (e) {
-        // En caso de error, mantenemos los valores por defecto
-        console.error("Error al procesar la fecha:", e);
+    } else {
+        // Fallback: Si no hay fecha ISO, usamos los valores de data.json directamente (ej. "25", "NOV", "Viernes")
+        dia = evento.diaMetadato || '25';
+        mes = evento.mesMetadato || 'NOV';
+        diaSemana = evento.diaSemanaMetadato || 'Viernes';
     }
-    
+
     // 3. Fallback para la URL de la imagen.
     const imagenUrl = evento.imagenUrlDetalle || evento.imagenUrl || 'https://placehold.co/900x450/960000/fff?text=Imagen+del+Evento';
 
@@ -114,7 +130,7 @@ function renderEventDetail(evento) {
                     </div>
 
                     <div class="evento-acciones-principal">
-                        <a href="#" class="btn-inscripcion">¡Inscríbete aquí!</a>
+                        <a href="${evento.linkInscripcion || '#'}" class="btn-inscripcion" target="_blank">¡Inscríbete aquí!</a>
                     </div>
                 </div>
 
@@ -127,7 +143,7 @@ function renderEventDetail(evento) {
                         <span class="metadato-dia">${dia}</span> 
                         <span class="metadato-mes">${mes}</span>
                         <span class="metadato-dia-semana">${diaSemana}</span>
-                        <span class="metadato-hora-rango">${horaTexto}</span>
+                        <span class="metadato-hora-rango">${rangoHora}</span>
                     </div>
 
                     <div class="evento-metadatos-bloque">
@@ -164,75 +180,30 @@ function renderError(message, container) {
     `;
 }
 
-// Agrega esta función de sonido en cualquier parte de detalle.js (afuera de DOMContentLoaded)
+/**
+ * Adjunta el evento de sonido a los botones de acción después de que el HTML es inyectado.
+ */
 function attachDetailSound() {
+    // Usamos 'new Audio' dentro de la función para asegurar que se crea cuando la página está lista
     const clickSound = new Audio('recursos/digital-click-357350.mp3'); 
     
     // Selecciona los botones que acaban de ser inyectados
     const actionButtons = document.querySelectorAll(
-        // Asegúrate de incluir el botón de inscripción:
-        '.btn-action-secondary, .btn-inscripcion, .error-state a, nav a' 
+        '.btn-action-secondary, .btn-inscripcion, .error-state a, .navbar a' 
     );
 
     actionButtons.forEach(button => {
         // Solo agrega el listener si no lo tiene
         if (!button.hasAttribute('data-sound-attached')) {
             button.addEventListener('click', () => {
+                // Reinicia y reproduce el sonido
                 clickSound.pause();
                 clickSound.currentTime = 0;
                 clickSound.play().catch(error => {
-                    // Captura el error de reproducción, que es normal en algunos navegadores
+                    // Ignora el error de 'not allowed' de reproducción automática
                 });
             });
             button.setAttribute('data-sound-attached', 'true');
         }
     });
 }
-
-
-/**
- * Carga el JSON, busca el evento por ID y lo renderiza.
- * @param {string} id - El ID del evento a buscar.
- * @param {HTMLElement} container - El elemento donde se renderizará el contenido.
- */
-async function fetchAndRenderEvent(id, container) {
-    try {
-        const response = await fetch('data.json');
-        if (!response.ok) {
-            throw new Error('No se pudo cargar el archivo data.json');
-        }
-        const data = await response.json();
-        
-        let todosLosEventos = [];
-        // ... (Tu lógica de concatenación de eventos sigue aquí) ...
-        if (data.secciones && data.secciones.actividadesSemana && data.secciones.actividadesSemana.eventos) {
-            todosLosEventos = todosLosEventos.concat(data.secciones.actividadesSemana.eventos);
-        }
-        if (data.secciones && data.secciones.eventosDestacados && data.secciones.eventosDestacados.eventos) {
-            todosLosEventos = todosLosEventos.concat(data.secciones.eventosDestacados.eventos);
-        }
-
-        const eventoEncontrado = todosLosEventos.find(e => e.id === id);
-
-        if (eventoEncontrado) {
-        container.innerHTML = renderEventDetail(eventoEncontrado);
-            
-            // 🔥 LLAMADA CLAVE: Se ejecuta inmediatamente después de inyectar el HTML
-            attachDetailSound(); 
-        } else {
-            renderError(`Evento con ID "${id}" no encontrado en ninguna sección.`, container);
-        }
-
-    } catch (error) {
-        console.error("Error al cargar o renderizar el evento:", error);
-        renderError(`Ocurrió un error al cargar los datos: ${error.message}`, container);
-    }
-}
-
-// **DEBES ELIMINAR ESTE BLOQUE** que tenías al final, porque intenta seleccionar 
-// los botones antes de que existan:
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    // ... tu código de sonido anterior ...
-});
-*/

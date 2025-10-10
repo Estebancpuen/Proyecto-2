@@ -21,7 +21,7 @@
         {
           "id": "seminario-ia-etica",
           "titulo": "Seminario: IA y Ética en el Siglo XXI",
-          "fecha": "2025-11-15",
+          "fecha": "Lunes, Miércoles, Viernes",
           "hora": "10:00 - 12:00",
           "ubicacion": "Sala de Conferencias",
           "capacidad": "80",
@@ -35,7 +35,7 @@
         {
           "id": "taller-re-make-uao",
           "titulo": "Taller Re-Make UAO: Emprendimiento y Medio Ambiente",
-          "fecha": "2025-10-29",
+          "fecha": "Martes y Jueves",
           "hora": "14:00 - 17:00",
           "ubicacion": "Laboratorio de Innovación UAO",
           "capacidad": "45",
@@ -49,7 +49,7 @@
         {
           "id": "yoga-campus",
           "titulo": "Yoga al Aire Libre",
-          "fecha": "2025-10-18",
+          "fecha": "Miércoles",
           "hora": "07:30 - 09:00",
           "ubicacion": "Zona Verde Central",
           "capacidad": "40",
@@ -63,7 +63,7 @@
         {
           "id": "cineforo-gattaca",
           "titulo": "Cineforo UAO: Gattaca",
-          "fecha": "2025-11-06",
+          "fecha": "Jueves",
           "hora": "18:00 - 21:00",
           "ubicacion": "Auditorio Principal",
           "capacidad": "120",
@@ -77,7 +77,7 @@
         {
           "id": "futbol-femenino-uao",
           "titulo": "Partido Amistoso de Fútbol Femenino",
-          "fecha": "2025-11-09",
+          "fecha": "Lunes, Martes, Jueves",
           "hora": "15:00 - 17:00",
           "ubicacion": "Cancha Sintética UAO",
           "capacidad": "200",
@@ -91,7 +91,7 @@
         {
           "id": "noche-salsa-uao",
           "titulo": "Noche de Salsa en la UAO",
-          "fecha": "2025-11-16",
+          "fecha": "Martes y Jueves",
           "hora": "18:00 - 21:00",
           "ubicacion": "Plazoleta Central",
           "capacidad": "180",
@@ -105,7 +105,7 @@
         {
           "id": "taller-oleo-uao",
           "titulo": "Taller de Pintura al Óleo: Luz, Textura y Expresión",
-          "fecha": "2025-10-17",
+          "fecha": "Miércoles",
           "hora": "14:00 - 17:00",
           "ubicacion": "Sala de Artes, Bloque E",
           "capacidad": "20",
@@ -119,7 +119,7 @@
         {
           "id": "ensayo-violin-uao",
           "titulo": "Ensayo Abierto de Violín y Música de Cámara",
-          "fecha": "2025-10-15",
+          "fecha": "Miércoles",
           "hora": "16:00 - 17:30",
           "ubicacion": "Sala de Música Quincha",
           "capacidad": "25",
@@ -133,7 +133,7 @@
         {
           "id": "taller-fotografia-naturaleza",
           "titulo": "Taller de Fotografía de Naturaleza",
-          "fecha": "2025-10-26",
+          "fecha": "Miércoles",
           "hora": "08:00 - 12:00",
           "ubicacion": "Campus UAO y alrededores",
           "capacidad": "25",
@@ -147,7 +147,7 @@
         {
           "id": "taller-dibujo-lapiz",
           "titulo": "Taller de Dibujo a Lápiz: Sombras y Proporciones",
-          "fecha": "2025-10-21",
+          "fecha": "Miércoles",
           "hora": "15:00 - 17:30",
           "ubicacion": "Sala de Artes, Bloque E",
           "capacidad": "20",
@@ -161,7 +161,7 @@
         {
           "id": "club-caminantes-uao",
           "titulo": "Club de Caminantes UAO: Conecta con la Naturaleza",
-          "fecha": "2025-10-13",
+          "fecha": "Sábado",
           "hora": "06:30 - 11:30",
           "ubicacion": "Punto de encuentro: Portería Principal UAO",
           "capacidad": "40",
@@ -169,13 +169,13 @@
           "descripcionCorta": "Únete al grupo de caminantes UAO y explora nuevas rutas naturales cada mes.",
           "descripcionLarga": "El Club de Caminantes UAO promueve la actividad física, el turismo ecológico y la conexión con el entorno natural. En esta edición, recorreremos el sendero ecológico La Vorágine, disfrutando de una experiencia al aire libre con guías ambientales y pausas activas. Incluye hidratación y seguro de salida.",
           "imagenUrl": "../recursos/clubCaminantes.png",
-          "etiqueta": "Deporte",
+          "etiqueta": "Deportes",
           "categoria": "Deportes"
         },
         {
           "id": "taller-tecnica-vocal",
           "titulo": "Taller de Técnica Vocal y Respiración",
-          "fecha": "2025-10-22",
+          "fecha": "Martes y Jueves",
           "hora": "16:00 - 18:00",
           "ubicacion": "Sala Quincha",
           "capacidad": "25",
@@ -189,7 +189,7 @@
         {
           "id": "taller-escritura-creativa",
           "titulo": "Taller de Escritura Creativa: Crea tu Relato",
-          "fecha": "2025-10-23",
+          "fecha": "Lunes",
           "hora": "10:00 - 12:00",
           "ubicacion": "Sala del CRAI - Biblioteca UAO",
           "capacidad": "30",
@@ -203,7 +203,7 @@
         {
           "id": "taller-jardin-sostenible",
           "titulo": "Taller: Jardín Sostenible en Casa",
-          "fecha": "2025-11-01",
+          "fecha": "Viernes",
           "hora": "09:00 - 11:00",
           "ubicacion": "Zona Verde Bloque E",
           "capacidad": "25",
@@ -217,7 +217,7 @@
         {
           "id": "taller-ansiedad-virtual",
           "titulo": "Taller: Ansiedad Virtual y Bienestar Digital",
-          "fecha": "2025-10-15",
+          "fecha": "Lunes y Viernes",
           "hora": "10:00 - 12:00",
           "ubicacion": "Sala de Bienestar, Bloque G",
           "capacidad": "35",
@@ -231,7 +231,7 @@
         {
           "id": "charla-sueno-descanso",
           "titulo": "Charla: Sueño y Productividad Académica",
-          "fecha": "2025-10-29",
+          "fecha": "Viernes",
           "hora": "09:00 - 10:30",
           "ubicacion": "Auditorio Quincha",
           "capacidad": "60",
@@ -343,7 +343,8 @@
       { "nombre": "Bienestar", "icono": "🧘‍♀️" },    
       { "nombre": "Tecnología", "icono": "💻" },
       { "nombre": "Literatura", "icono": "📚" },
-      { "nombre": "Deportes", "icono": "⚽" }
+      { "nombre": "Deportes", "icono": "⚽" },
+      { "nombre": "Formativo", "icono": "📚" }
     ]
     }
   }
