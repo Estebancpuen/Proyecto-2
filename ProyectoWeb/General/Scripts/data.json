@@ -347,5 +347,21 @@
       { "nombre": "Formativo", "icono": "📚" }
     ]
     }
+  },"inscripcion": {
+  "titulo": "Formulario de Inscripción",
+  "subtitulo": "Completa tus datos para registrarte al evento:",
+  "campos": {
+    "nombre": "Nombre Completo",
+    "correo": "Correo Electrónico UAO",
+    "telefono": "Teléfono de Contacto",
+    "codigo_estudiantil": "Código Estudiantil/Identificación",
+    "carrera": "Carrera/Programa Académico"
+  },
+  "acciones": {
+    "boton_inscribir": "Inscribirse Ahora",
+    "mensaje_exito_titulo": "¡Registro Exitoso! 🎉",
+    "mensaje_exito_cuerpo": "Has sido registrado con éxito en el evento. Recibirás un correo de confirmación con los detalles del acceso.",
+    "boton_regresar": "Volver a la Página Principal"
   }
+}
 }

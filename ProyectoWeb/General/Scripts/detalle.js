@@ -75,45 +75,41 @@ async function fetchAndRenderEvent(id, container) {
 function renderEventDetail(evento) {
     // 1. Extracción de datos de metadatos 
     // Usamos el operador de encadenamiento opcional (?) para hacer el código más limpio
-    const fechaCompleta = evento.fechaCompleta || evento.fecha; 
-    const horaTexto = evento.hora || '09:00-17:00'; 
+    const fechaCompleta = evento.fechaCompleta || evento.fecha;
+    const horaTexto = evento.hora || '09:00-17:00';
     const ubicacionTexto = evento.ubicacion || 'Lugar no especificado';
     const capacidadTexto = evento.capacidad || 'N/A';
     const organizaTexto = evento.organiza || 'No especificado';
-    
+
     // 2. Procesamiento de la fecha para los bloques de metadatos
     let dia = '';
     let mes = '';
     let diaSemana = '';
     let rangoHora = horaTexto;
-    
+
     // Intentamos parsear la fecha si se parece a 'YYYY-MM-DD' o si se pasa un campo 'fechaISO'
     const fechaParaParsear = evento.fechaISO || (fechaCompleta && fechaCompleta.match(/^\d{4}-\d{2}-\d{2}$/) ? fechaCompleta : null);
 
     if (fechaParaParsear) {
-        try {
-            // Añadimos hora para evitar problemas de zona horaria al parsear solo la fecha
-            const fechaObj = new Date(fechaParaParsear + 'T12:00:00'); 
-            if (!isNaN(fechaObj)) {
-                dia = fechaObj.getDate().toString();
-                // toLocaleString para obtener MES y DÍA SEMANA en español
-                mes = fechaObj.toLocaleString('es-ES', { month: 'short' }).toUpperCase().replace('.', ''); 
-                diaSemana = fechaObj.toLocaleString('es-ES', { weekday: 'long' });
-            }
-        } catch (e) {
-            console.error("Error al procesar la fecha ISO:", e);
-        }
+        const dateObj = new Date(fechaParaParsear + 'T00:00:00'); // Asegura zona horaria neutra
+        const opcionesDia = { weekday: 'long' };
+        const opcionesMes = { month: 'short' };
+        const opcionesDiaNum = { day: '2-digit' };
+        
+        dia = dateObj.toLocaleDateString('es-CO', opcionesDiaNum);
+        mes = dateObj.toLocaleDateString('es-CO', opcionesMes).toUpperCase().replace('.', '');
+        diaSemana = dateObj.toLocaleDateString('es-CO', opcionesDia).toUpperCase();
+        
+        // Si la hora se maneja por separado, la dejamos como está.
     } else {
-        // Fallback: Si no hay fecha ISO, usamos los valores de data.json directamente (ej. "25", "NOV", "Viernes")
-        dia = evento.diaMetadato || '25';
-        mes = evento.mesMetadato || 'NOV';
-        diaSemana = evento.diaSemanaMetadato || 'Viernes';
+        // Para fechas no estándar (ej. "Lunes, Miércoles, Viernes")
+        dia = fechaCompleta.split(',')[0] || ''; 
+        mes = 'Múltiple'; 
+        diaSemana = fechaCompleta.split(',').length > 1 ? fechaCompleta : 'Ver detalles';
     }
 
-    // 3. Fallback para la URL de la imagen.
-    const imagenUrl = evento.imagenUrlDetalle || evento.imagenUrl || 'https://placehold.co/900x450/960000/fff?text=Imagen+del+Evento';
 
-    // Generamos la plantilla con la nueva estructura de dos columnas
+    // 3. Generación del HTML
     return `
         <div class="evento-detalle-container">
             <h1 class="evento-titulo-principal">${evento.titulo}</h1>
@@ -121,52 +117,60 @@ function renderEventDetail(evento) {
             <div class="evento-layout">
                 
                 <div class="evento-col-principal">
-                    <img src="${imagenUrl}" alt="${evento.titulo}" class="evento-detalle-imagen">
-                    
-                    <h2 class="evento-descripcion-titulo">Descripción del Evento</h2>
-                    <div class="evento-detalle-descripcion">
-                        <p>${evento.descripcionLarga || 
-                            evento.descripcionCorta || 'Descripción detallada no disponible.'}</p>
-                    </div>
-
-                    <div class="evento-acciones-principal">
-                        <a href="${evento.linkInscripcion || '#'}" class="btn-inscripcion" target="_blank">¡Inscríbete aquí!</a>
-                    </div>
+                    <img src="${evento.imagenUrl}" alt="Imagen del evento: ${evento.titulo}" class="evento-imagen">
+                    <p class="evento-descripcion-larga">${evento.descripcionLarga}</p>
                 </div>
-
+                
                 <div class="evento-col-metadatos">
-                    <div class="evento-metadatos-titulo-bloque">
-                        ${evento.subtitulo || 'Detalles Importantes'}
-                    </div>
 
-                    <div class="evento-metadatos-bloque evento-fecha-bloque">
-                        <span class="metadato-dia">${dia}</span> 
+                    <div class="metadato-bloque metadato-fecha-hora">
+                        <span class="metadato-dia-num">${dia}</span>
                         <span class="metadato-mes">${mes}</span>
                         <span class="metadato-dia-semana">${diaSemana}</span>
                         <span class="metadato-hora-rango">${rangoHora}</span>
                     </div>
 
-                    <div class="evento-metadatos-bloque">
-                        <h3 class="metadato-subtitulo">Detalles del Evento</h3>
+                    <div class="metadato-bloque">
+                        <h3 class="metadato-subtitulo">Detalles</h3>
                         
-                        <p class="metadato-linea"><span class="metadato-icono">📍</span> <span class="metadato-label">Ubicación</span>: ${ubicacionTexto}</p>
-                        <p class="metadato-linea"><span class="metadato-icono">👥</span> <span class="metadato-label">Capacidad</span>: ${capacidadTexto} personas</p>
-                        <p class="metadato-linea"><span class="metadato-icono">🏢</span> <span class="metadato-label">Organiza</span>: ${organizaTexto}</p>
+                        <p class="metadato-linea">
+                            <span class="metadato-icono">📍</span>
+                            <span class="metadato-label">Ubicación:</span> ${ubicacionTexto}
+                        </p>
+                        
+                        <p class="metadato-linea">
+                            <span class="metadato-icono">👥</span>
+                            <span class="metadato-label">Capacidad:</span> ${capacidadTexto}
+                        </p>
+                        
+                        <p class="metadato-linea">
+                            <span class="metadato-icono">🏢</span>
+                            <span class="metadato-label">Organiza:</span> ${organizaTexto}
+                        </p>
+
+                        <p class="metadato-linea">
+                            <span class="tag tag-detalle ${evento.etiqueta}">${evento.etiqueta}</span>
+                        </p>
                     </div>
 
                 </div>
 
             </div>
-
-             <div class="evento-detalle-acciones">
-                <a href="index.html" class="btn-action-secondary">← Volver a Eventos</a>
+            
+            <div class="evento-detalle-acciones">
+                <a href="index.html" class="btn-action-secondary">Volver a la lista</a>
+                
+                <a href="inscripcion.html?id=${evento.id}&titulo=${encodeURIComponent(evento.titulo)}" class="btn-action-primary btn-inscripcion">
+                    Inscribirse
+                </a>
             </div>
+
         </div>
     `;
 }
 
 /**
- * Renderiza un mensaje de error o evento no encontrado.
+ * Renderiza un mensaje de error dentro del contenedor de detalle.
  * @param {string} message - El mensaje de error.
  * @param {HTMLElement} container - El elemento donde se renderizará el mensaje.
  */
@@ -203,7 +207,7 @@ function attachDetailSound() {
                     // Ignora el error de 'not allowed' de reproducción automática
                 });
             });
-            button.setAttribute('data-sound-attached', 'true');
+            button.setAttribute('data-sound-attached', 'true'); // Marca el botón como "sonido adjunto"
         }
     });
 }

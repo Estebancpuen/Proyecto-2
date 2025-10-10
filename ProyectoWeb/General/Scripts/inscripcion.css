@@ -1,0 +1,111 @@
+/* Importar fuentes si no están ya en style.css (aunque se confía en style.css) */
+
+/* Contenedor principal del formulario, similar al layout de detalle.css o feedback.html */
+.inscripcion-container {
+    max-width: 700px;
+    margin: 60px auto; /* Centra horizontalmente con margen superior/inferior */
+    padding: 30px 40px; 
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.inscripcion-container h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.inscripcion-container #evento-a-inscribir {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #960000;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+/* Estilos del formulario */
+.inscripcion-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre grupos de formulario */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.inscripcion-form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.inscripcion-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.inscripcion-form input:focus {
+    border-color: #960000;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(150, 0, 0, 0.1);
+}
+
+/* Estilos del botón: Reutiliza .btn-primary de style.css */
+.inscripcion-form button[type="submit"] {
+    margin-top: 25px;
+    /* Ajustes específicos para el botón del formulario si es necesario, 
+       pero se recomienda mantener la clase .btn-primary */
+}
+
+
+/* --- SECCIÓN DE MENSAJE DE ÉXITO --- */
+.success-message {
+    display: none; /* Inicialmente oculto, JS lo muestra */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Para que ocupe gran parte de la pantalla */
+    text-align: center;
+    padding: 40px;
+}
+
+.success-message h1 {
+    font-size: 3rem;
+    color: #008000; /* Verde para el éxito */
+    margin-bottom: 20px;
+}
+
+.success-message p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+/* Botón de regresar usa .btn-primary */
+
+/* Media Queries para adaptabilidad */
+@media (max-width: 768px) {
+    .inscripcion-container {
+        margin: 30px 15px;
+        padding: 20px;
+    }
+
+    .inscripcion-container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .inscripcion-container #evento-a-inscribir {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Inscripción a Evento - UAO</title>
+    
+    <link rel="stylesheet" href="style.css"/> 
+    <link rel="stylesheet" href="inscripcion.css"/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" id="nav-logo">Bitácora Cultural UAO</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#actividades">Actividades</a></li>
+                <li><a href="index.html#eventos">Eventos</a></li>
+                <li><a href="index.html#categorias">Categorías</a></li>
+                <li><a href="feedback.html">Feedback</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="inscripcion-container" id="inscripcion-seccion">
+            
+            <h1 id="inscripcion-titulo">Cargando Formulario...</h1>
+            <p id="inscripcion-subtitulo"></p>
+            <h2 id="evento-a-inscribir"></h2>
+
+            <form class="inscripcion-form" id="registroForm">
+                
+                <div class="form-group">
+                    <label for="nombre" id="label-nombre"></label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo" id="label-correo"></label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono" id="label-telefono"></label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+                
+                <div class="form-group">
+                    <label for="codigo_estudiantil" id="label-codigo"></label>
+                    <input type="text" id="codigo_estudiantil" name="codigo_estudiantil" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="carrera" id="label-carrera"></label>
+                    <input type="text" id="carrera" name="carrera" required>
+                </div>
+
+                <button type="submit" id="boton-inscribir" class="btn-primary"></button>
+            </form>
+        </section>
+
+        <section class="success-message" id="success-seccion">
+            <h1 id="mensaje-exito-titulo"></h1>
+            <p id="mensaje-exito-cuerpo"></p>
+            <a href="index.html" class="btn-primary" id="boton-regresar"></a>
+        </section>
+    </main>
+
+    <script src="inscripcion.js"></script>
+</body>
+</html>
