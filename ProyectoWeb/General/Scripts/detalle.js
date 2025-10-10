@@ -73,43 +73,61 @@ async function fetchAndRenderEvent(id, container) {
  * @returns {string} El HTML generado.
  */
 function renderEventDetail(evento) {
-    // 1. Extracción de datos de metadatos 
-    // Usamos el operador de encadenamiento opcional (?) para hacer el código más limpio
-    const fechaCompleta = evento.fechaCompleta || evento.fecha;
+    // 1. Extracción de datos comunes
+    // Usamos el campo 'fecha' ya que es el que viene de data.json (ej: "Lunes, Miércoles, Viernes" o "2025-09-24")
+    const fechaCompleta = evento.fecha; 
     const horaTexto = evento.hora || '09:00-17:00';
     const ubicacionTexto = evento.ubicacion || 'Lugar no especificado';
     const capacidadTexto = evento.capacidad || 'N/A';
     const organizaTexto = evento.organiza || 'No especificado';
 
-    // 2. Procesamiento de la fecha para los bloques de metadatos
-    let dia = '';
-    let mes = '';
-    let diaSemana = '';
-    let rangoHora = horaTexto;
+    // 2. Procesamiento de la fecha y generación del bloque de metadato de fecha/hora
+    let metadatoFechaHoraHTML;
+    
+    // Intentamos parsear la fecha si se parece a 'YYYY-MM-DD' para usar el estilo de calendario
+    // Usamos fecha.match para determinar si es un formato de fecha ISO estándar.
+    const esFechaEstandar = fechaCompleta && fechaCompleta.match(/^\d{4}-\d{2}-\d{2}$/);
 
-    // Intentamos parsear la fecha si se parece a 'YYYY-MM-DD' o si se pasa un campo 'fechaISO'
-    const fechaParaParsear = evento.fechaISO || (fechaCompleta && fechaCompleta.match(/^\d{4}-\d{2}-\d{2}$/) ? fechaCompleta : null);
-
-    if (fechaParaParsear) {
-        const dateObj = new Date(fechaParaParsear + 'T00:00:00'); // Asegura zona horaria neutra
+    if (esFechaEstandar) {
+        // LÓGICA DE FECHA ESTÁNDAR (CALENDARIO VISUAL)
+        const dateObj = new Date(fechaCompleta + 'T00:00:00'); // Asegura zona horaria neutra
         const opcionesDia = { weekday: 'long' };
         const opcionesMes = { month: 'short' };
         const opcionesDiaNum = { day: '2-digit' };
         
-        dia = dateObj.toLocaleDateString('es-CO', opcionesDiaNum);
-        mes = dateObj.toLocaleDateString('es-CO', opcionesMes).toUpperCase().replace('.', '');
-        diaSemana = dateObj.toLocaleDateString('es-CO', opcionesDia).toUpperCase();
+        const dia = dateObj.toLocaleDateString('es-CO', opcionesDiaNum);
+        const mes = dateObj.toLocaleDateString('es-CO', opcionesMes).toUpperCase().replace('.', '');
+        const diaSemana = dateObj.toLocaleDateString('es-CO', opcionesDia).toUpperCase();
         
-        // Si la hora se maneja por separado, la dejamos como está.
+        metadatoFechaHoraHTML = `
+            <div class="metadato-bloque metadato-fecha-hora">
+                <span class="metadato-dia-num">${dia}</span>
+                <span class="metadato-mes">${mes}</span>
+                <span class="metadato-dia-semana">${diaSemana}</span>
+                <span class="metadato-hora-rango">${horaTexto}</span>
+            </div>
+        `;
+
     } else {
-        // Para fechas no estándar (ej. "Lunes, Miércoles, Viernes")
-        dia = fechaCompleta.split(',')[0] || ''; 
-        mes = 'Múltiple'; 
-        diaSemana = fechaCompleta.split(',').length > 1 ? fechaCompleta : 'Ver detalles';
+        // LÓGICA DE FECHA NO ESTÁNDAR (TEXTO SIMPLE, EVITANDO EL CALENDARIO GRANDE)
+        // Esto evita usar las clases .metadato-dia-num y .metadato-mes que causan el error de estilo/color.
+        metadatoFechaHoraHTML = `
+            <div class="metadato-bloque metadato-fecha-hora-texto">
+                <h3 class="metadato-subtitulo">Fecha y Hora</h3>
+                <p class="metadato-linea">
+                    <span class="metadato-icono">🗓️</span>
+                    <span class="metadato-label">Fechas:</span> ${fechaCompleta}
+                </p>
+                <p class="metadato-linea">
+                    <span class="metadato-icono">⏰</span>
+                    <span class="metadato-label">Horario:</span> ${horaTexto}
+                </p>
+            </div>
+        `;
     }
 
 
-    // 3. Generación del HTML
+    // 3. Generación del HTML final
     return `
         <div class="evento-detalle-container">
             <h1 class="evento-titulo-principal">${evento.titulo}</h1>
@@ -117,18 +135,13 @@ function renderEventDetail(evento) {
             <div class="evento-layout">
                 
                 <div class="evento-col-principal">
-                    <img src="${evento.imagenUrl}" alt="Imagen del evento: ${evento.titulo}" class="evento-imagen">
+                    <img src="${evento.imagenUrl}" alt="Imagen del evento: ${evento.titulo}" class="evento-detalle-imagen">
                     <p class="evento-descripcion-larga">${evento.descripcionLarga}</p>
                 </div>
                 
                 <div class="evento-col-metadatos">
 
-                    <div class="metadato-bloque metadato-fecha-hora">
-                        <span class="metadato-dia-num">${dia}</span>
-                        <span class="metadato-mes">${mes}</span>
-                        <span class="metadato-dia-semana">${diaSemana}</span>
-                        <span class="metadato-hora-rango">${rangoHora}</span>
-                    </div>
+                    ${metadatoFechaHoraHTML}
 
                     <div class="metadato-bloque">
                         <h3 class="metadato-subtitulo">Detalles</h3>
